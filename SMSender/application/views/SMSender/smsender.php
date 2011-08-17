@@ -4,19 +4,19 @@
             <div>
                 <label>Nro movil origen</label>
             </div>
-            <? echo form_input(array('name'=>'origen_subno')); ?>
+            <? echo form_input(array('name'=>'data[origen_subno]')); ?>
         </div>
         <div class="input">
             <div>
                 <label>Nro movil destino</label>
             </div>
-            <? echo form_input(array('name'=>'origen_subno')); ?>
+            <? echo form_input(array('name'=>'data[destino_subno]')); ?>
         </div>
         <div class="input">
             <div>
                 <label>Mensaje</label>
             </div>
-            <? echo form_textarea(array('name'=>'message', 'rows'=>'5', 'cols'=>'100', 'value'=>'')); ?>
+            <? echo form_textarea(array('name'=>'data[message]', 'rows'=>'5', 'cols'=>'100', 'value'=>'')); ?>
         </div>
         <div class="input">
             <? echo form_submit('submit', 'Enviar'); ?>
