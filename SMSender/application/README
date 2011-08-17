@@ -1,0 +1,7 @@
+SMSender
+
+Descripcion:
+    Formulario para enviar mensajes de texto.
+
+Esquema DB:
+    /config/DB/schema.sql  
