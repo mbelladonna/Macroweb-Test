@@ -1,3 +1,12 @@
+<?                      
+    if (isset($error)) :
+?>
+    <div class="error"><?echo $error?></div>
+<?
+    unset($error);
+    endif;
+?>
+
 <div class="form">
     <? echo form_open(current_url(), array('method' => 'post')); ?>
         <div class="input">
