@@ -63,7 +63,11 @@ class smsender extends MY_Controller {
 	}
 
     public function checkPin($id) {
-        $this->data['id'] = $id;
+        $params = array(
+            'id' => $id
+        );
+        $request = $this->smsender_model->loadRequest($params);
+        $this->data['request'] = $request[0];
         $this->data['content'] = $this->load->view('SMSender/checkpin', $this->data, TRUE);
         $this->load->view($this->template, $this->data);
     }

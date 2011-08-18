@@ -8,5 +8,6 @@
 ?>
 
 <div class="form">
-<? echo "Continuar a chequeo de pin para request $id" ?>
+<? echo "Continuar a chequeo de pin para request : <br>"; ?>
+<pre><?echo print_r($request, true);?></pre>
 </div>

@@ -11,6 +11,11 @@ class smsender_model extends CI_Model {
         return $this->db->insert_id();
     }
 
+    function loadRequest($where) {
+        $query = $this->db->get_where('requests', $where); 
+        return $query->result();
+    }
+
 }
 
 ?>
