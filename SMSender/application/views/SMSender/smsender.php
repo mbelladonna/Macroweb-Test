@@ -7,8 +7,14 @@
     endif;
 ?>
 
+<div class="error"><? echo $this->session-> userdata('message'); ?></div>
+
+<? echo $this->session-> unset_userdata ('message'); ?>
+
 <div class="form">
     <? echo form_open(current_url(), array('method' => 'post')); ?>
+    
+        
         <div class="input">
             <div>
                 <label>Nro movil origen</label>

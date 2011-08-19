@@ -6,20 +6,22 @@ class smsender_model extends CI_Model {
         parent::__construct();
     }
 
-    function saveRequest($params) {
-        $this->db->insert('requests', $params);
-        return $this->db->insert_id();
-    }
-
     function loadRequest($where) {
         $query = $this->db->get_where('requests', $where); 
         return $query->result();
     }
-    
+
+    function saveRequest($params) {
+        $this->db->insert('requests', $params);
+        return $this->db->insert_id();
+    }
     
     function saveCheckpinRequest($params){
         $this->db->insert('check_pin_requests', $params);
-        return $this->db->insert_id();
+    }
+    
+    function saveSendMessageRequest($params){
+        $this->db->insert('send_message_requests', $params);
     }
 
 }
