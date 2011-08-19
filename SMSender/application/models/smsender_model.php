@@ -24,12 +24,20 @@ class smsender_model extends CI_Model {
         $this->db->insert('send_pin_requests', $params);
     }
     
-    function saveCheckpinRequest($params){
+    function saveCheckpinRequest($params) {
         $this->db->insert('check_pin_requests', $params);
     }
     
-    function saveSendMessageRequest($params){
+    function saveSendMessageRequest($params) {
         $this->db->insert('send_message_requests', $params);
+    }
+
+    function countMessagesToday($nroMovil) {
+        $this->db->select('count(request_id) AS msg_today');
+        $this->db->from('requests AS R');
+        $this->db->join('send_message_requests AS SMR', 'R.id=SMR.request_id');
+        $this->db->where("DATE(NOW())=DATE(SMR.date) AND R.origen_subno='$nroMovil' AND send_message_response='200'");
+        return $this->db->get()->row()->msg_today;
     }
 
 }

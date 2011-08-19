@@ -62,6 +62,12 @@ code {
     margin:5px;
 }
 
+.message
+{
+    color:green;
+    margin:5px;
+}
+
 #nav
 {
     text-align:right;margin:0;padding:0;

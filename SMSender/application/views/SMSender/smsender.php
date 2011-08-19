@@ -7,9 +7,14 @@
     endif;
 ?>
 
-<div class="error"><? echo $this->session-> userdata('message'); ?></div>
-
-<? echo $this->session-> unset_userdata ('message'); ?>
+<?                      
+    if (isset($status_message)) :
+?>
+    <div class="message"><?echo $status_message?></div>
+<?
+    unset($status_message);
+    endif;
+?>
 
 <div class="form">
     <? echo form_open(current_url(), array('method' => 'post')); ?>
