@@ -23,6 +23,12 @@
         </div>
         <div class="input">
             <div>
+                <label>Password</label>
+            </div>
+            <? echo form_password(array('name'=>'data[password]')); ?>
+        </div>
+        <div class="input">
+            <div>
                 <label>Nro movil destino</label>
             </div>
             <? echo form_input(array('name'=>'data[destino_subno]')); ?>

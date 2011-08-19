@@ -16,6 +16,14 @@ class smsender_model extends CI_Model {
         return $this->db->insert_id();
     }
     
+    function saveCheckUserRequest($params) {
+        $this->db->insert('check_user_requests', $params);
+    }
+    
+    function saveSendPinRequest($params) {
+        $this->db->insert('send_pin_requests', $params);
+    }
+    
     function saveCheckpinRequest($params){
         $this->db->insert('check_pin_requests', $params);
     }

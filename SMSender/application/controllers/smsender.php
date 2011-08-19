@@ -10,6 +10,7 @@ class smsender extends MY_Controller {
     var $app = 'PUSH-ECO';
     var $sNumber = '';
     var $gateway_url = '';
+    var $check_user_url = '';
     var $send_pin_url = '';
     var $check_pin_url = '';
     var $send_message_url = '';
@@ -20,6 +21,7 @@ class smsender extends MY_Controller {
         if (SITE_URL == 'local'){
             $this->gateway_url = 'http://localhost/Gateway-Pupolis/index.php/';
         }
+        $this->check_user_url  = "{$this->gateway_url}gate/userExist/AmBnZRF2QWf/";
         $this->send_pin_url = "{$this->gateway_url}gate/sendPin/AmBnZRF2QWf/{$this->keyword}/{$this->campaign_id}/";
         $this->check_pin_url = "{$this->gateway_url}gate/checkPin/AmBnZRF2QWf/{$this->keyword}/{$this->campaign_id}/";
         $this->send_message_url = "http://api.sms.egtelecom.es/pass/send.php";  
@@ -33,36 +35,77 @@ class smsender extends MY_Controller {
         if ($this->input->post('data')){
 
             $data = $this->input->post('data');
-
-            // Solicitar al gw envio de pin a numero origen
-            $params = array(
-                'nroPhone' => $data['origen_subno'],
-            );
-            $response = $this->curl->_simple_call('get', $this->send_pin_url, $params);
-
-            // Quitar comentarios para forzar rstas del gateway para pruebas
-               $response = '{"rsp":"ok"}'; //-- PIN enviado
-            // $response = '{"rsp":"error"}'; //-- Error en envio
-            // $response = FALSE; //-- Error en comunicacion con gw
-
+            
             $request_row = array(
                 'origen_subno' => $data['origen_subno'],
+                'password' => $data['password'],
                 'destino_subno' => $data['destino_subno'],
                 'message' => $data['message'],
-                'send_pin_response' => $response
             );
             $request_id = $this->smsender_model->saveRequest($request_row);
-
-            if ($response != FALSE){
-                $response = json_decode($response);                
-                if ($response->rsp == 'ok') {
-                    redirect("/smsender/checkPin/$request_id");    
+            
+            
+            // Chequeo de subscripción
+            $paramscheck = array(
+                'nroPhone' => $data['origen_subno'],
+                'passwd' => $data['password'],
+            );
+            $responsecheck = $this->curl->_simple_call('get', $this->check_user_url, $paramscheck);
+            
+            // $responsecheck = '{"rsp":"ok"}'; //-- Existe el usuario
+             $response = '{"rsp":"error"}'; //-- Error 
+            // $response = FALSE; //-- Error en comunicacion con gw
+            
+            $checkuser_request_row = array(
+                'request_id' => $request_id,
+                'check_user_response' => $responsecheck
+            );
+            $this->smsender_model->saveCheckUserRequest($checkuser_request_row);
+            
+            
+            if ($responsecheck != FALSE){
+                $responsecheck = json_decode($responsecheck);                
+                if ($responsecheck->rsp == 'ok') {
+                    // Usuario subscripto. Mando mensaje.
+                    redirect("/smsender/sendmessage/$request_id");     
                 } else {
-                    $this->data['error'] = 'Error al intentar enviar pin';
+                    // Usuario no subscripto, paso a check pin
+                    
+                    // Solicitar al gw envio de pin a numero origen
+                    $params = array(
+                        'nroPhone' => $data['origen_subno'],
+                    );
+                    $response = $this->curl->_simple_call('get', $this->send_pin_url, $params);
+
+                    // Quitar comentarios para forzar rstas del gateway para pruebas
+                    $response = '{"rsp":"ok"}'; //-- PIN enviado
+                    // $response = '{"rsp":"error"}'; //-- Error en envio
+                    // $response = FALSE; //-- Error en comunicacion con gw
+                    
+                    
+                    // -- Falta ver si guardo el send_pin_response
+                    $sendpin_request_row = array(
+                        'request_id' => $request_id,
+                        'send_pin_response' => $response
+                    );
+                    $this->smsender_model->saveSendPinRequest($sendpin_request_row);
+                    
+                    if ($response != FALSE){
+                        $response = json_decode($response);                
+                        if ($response->rsp == 'ok') {
+                            redirect("/smsender/checkPin/$request_id");    
+                        } else {
+                            $this->data['error'] = 'Error al intentar enviar pin';
+                        }
+                    } else {
+                        $this->data['error'] = 'Error en comunicación con gateway';
+                    }
                 }
             } else {
                 $this->data['error'] = 'Error en comunicación con gateway';
             }
+            
+            
         }
 
         $this->data['content'] = $this->load->view('SMSender/smsender', $this->data, TRUE);
