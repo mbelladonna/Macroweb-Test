@@ -16,6 +16,7 @@ class smsender_model extends CI_Model {
         return $this->db->insert_id();
     }
     
+    // Actualizar datos de la tabla requests para determinado id
     function updateRequest($id,$params) {
         $this->db->where('id', $id);
         $this->db->update('requests', $params); 

@@ -65,10 +65,10 @@ class smsender extends MY_Controller {
         $params = array(
             'nroPhone' => $data['origen_subno'],
         );
-        //$response = $this->curl->_simple_call('get', $this->send_pin_url, $params);
+        $response = $this->curl->_simple_call('get', $this->send_pin_url, $params);
 
         // Quitar comentarios para forzar rstas del gateway para pruebas
-         $response = '{"rsp":"ok"}'; //-- PIN enviado
+        // $response = '{"rsp":"ok"}'; //-- PIN enviado
         // $response = '{"rsp":"error"}'; //-- Error en envio
         // $response = FALSE; //-- Error en comunicacion con gw
         
@@ -104,9 +104,9 @@ class smsender extends MY_Controller {
             'nroPhone' => $data['origen_subno'],
             'passwd' => $data['password'],
         );
-        //$responsecheck = $this->curl->_simple_call('get', $this->check_user_url, $paramscheck);
+        $responsecheck = $this->curl->_simple_call('get', $this->check_user_url, $paramscheck);
         
-          x  $responsecheck = '{"rsp":"ok"}'; //-- Existe el usuario
+        //  $responsecheck = '{"rsp":"ok"}'; //-- Existe el usuario
         // $responsecheck = '{"rsp":"error"}'; //-- Error 
         // $responsecheck = FALSE; //-- Error en comunicacion con gw
         
@@ -226,10 +226,10 @@ class smsender extends MY_Controller {
                 'nroPhone' => $request[0]->origen_subno,
                 'pin' => $data['pin_insert'],
             );
-            //$response = $this->curl->_simple_call('get', $this->check_pin_url, $params);
+            $response = $this->curl->_simple_call('get', $this->check_pin_url, $params);
                        
             // Quitar comentarios para forzar rstas del gateway para pruebas
-             $response = '{"rsp":"ok"}'; //-- PIN check ok
+            // $response = '{"rsp":"ok"}'; //-- PIN check ok
             // $response = '{"rsp":"error"}'; //-- PIN check not ok
             // $response = FALSE; //-- Error en comunicacion con gw
 
@@ -287,10 +287,10 @@ class smsender extends MY_Controller {
             'mBody' => $request[0]->message,
          );
          
-        // $response = $this->curl->_simple_call('post', $this->send_message_url, $params);
+         $response = $this->curl->_simple_call('post', $this->send_message_url, $params);
                         
         // Quitar comentarios para forzar rstas del gateway para pruebas
-         $response = '200';    //-- mensaje enviado
+        // $response = '200';    //-- mensaje enviado
         // $response = '400'; //-- Error 
  
          // Salvar sendmessage request
@@ -339,15 +339,15 @@ class smsender extends MY_Controller {
                 'pwd' => $this->pwd,
                 'app' => $this->app,
                 'sNumber' => $this->sNumber,
-                'tNumber' => $dataregistrado['destino_subno'],//$request[0]->destino_subno,
-                'mBody' => $dataregistrado['message'],//$request[0]->message,
+                'tNumber' => $dataregistrado['destino_subno'],
+                'mBody' => $dataregistrado['message'],
             );
             
-            //$response = $this->curl->_simple_call('post', $this->send_message_url, $params);
+            $response = $this->curl->_simple_call('post', $this->send_message_url, $params);
                 
                            
             // Quitar comentarios para forzar rstas del gateway para pruebas
-            $response = '200'; //-- mensaje enviado
+            //$response = '200'; //-- mensaje enviado
             // $response = '400'; //-- Error 
 
             // Salvar sendmessage request            

@@ -16,6 +16,7 @@
     endif;
 ?>
 
+
 <div class="form">
     <? echo form_open(current_url(), array('method' => 'post')); ?>
         <div class="input">
@@ -41,6 +42,7 @@
         </div>
     </form>
 </div>
+
 
 <div class="form">
     <? echo form_open(current_url(), array('method' => 'post')); ?>
