@@ -1,0 +1,278 @@
+
+body {
+	background: url("../img/fondocolor.jpg") repeat-x;
+	margin-top:0px;
+}
+
+#contenedor {
+width:970px;
+height:770px;
+margin:auto;
+}
+
+#titular {
+height:107px;
+margin-top:5px;
+font-family:"Times New Roman", Times, serif;
+font-size:34px;
+color:#FFFFFF;
+text-align:center;
+text-shadow: 0.1em 0.1em 0.2em black;
+}
+
+#titular22 {
+height:107px;
+margin-top:5px;
+font-family:"Times New Roman", Times, serif;
+font-size:34px;
+color:#FFFFFF;
+text-align:center;
+}
+
+#caja_izq {
+width:449px;
+height:450px;
+float:left;
+}
+
+#caja_der {
+width:521px;
+height:450px;
+float:left;
+}
+
+
+#caja1 {
+width:499px;
+height:63px;
+background:url(../img/caja1.png);
+float:left;
+margin-top:22px;
+margin-left:15px;
+margin-bottom:10px;}
+
+#caja_exito {
+width:499px;
+height:125px;
+background:url(../img/exitos.png);
+float:left;
+margin-top:22px;
+margin-left:15px;
+margin-bottom:10px;}
+
+#caja_error {
+width:499px;
+height:125px;
+background:url(../img/error.png);
+float:left;
+margin-top:22px;
+margin-left:15px;
+margin-bottom:10px;}
+
+#caja_pin {
+width:499px;
+height:63px;
+background:url(../img/seguridad21.png);
+float:left;
+margin-top:22px;
+margin-left:15px;
+margin-bottom:10px;}
+
+#caja2 {
+width:499px;
+height:63px;
+background:url(../img/caja2.png);
+float:left;
+margin-left:15px;
+margin-bottom:10px;}
+
+#caja_vacia {
+width:499px;
+height:125px;
+background:url(../img/2vacia.png);
+float:left;
+margin-left:15px;
+margin-bottom:10px;}
+
+#caja3 {
+width:500px;
+height:124px;
+background:url(../img/caja3.png);
+float:left;
+margin-left:15px;
+margin-bottom:8px;}
+
+#caja2_3 {
+width:500px;
+height:124px;
+background:url(../img/caja2_3.png);
+float:left;
+margin-left:15px;
+margin-bottom:8px;}
+
+#acepto {
+width:400px;
+float:left;
+margin-left:98px;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:11px;
+color:#FFFFFF;
+text-align:center;
+margin-bottom:10px;
+}
+
+.boton {
+width:270px;
+height:83px;
+background:url(../img/envia-sms.png);
+border:none;
+}
+
+#texto_msjes {
+margin-top:21px;
+margin-left:86px;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:13px;
+color:#333333;
+}
+
+#texto_msjes_exito {
+margin-top:30px;
+margin-left:29px;
+}
+
+#texto_msjes2 {
+margin-top:21px;
+margin-left:86px;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:13px;
+color:#333333;
+}
+
+#texto_msjes3 {
+margin-top:15px;
+margin-left:86px;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:13px;
+color:#333333;
+}
+
+.estilo_numeracion {
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:14px;
+color:#2c6333;
+}
+
+#lugar_boton {
+width:270px;
+height:83px;
+float:left;
+margin-left:150px;
+}
+
+#caja_precio{
+width:300px;
+height:14px;
+margin-left:181px;
+float:left;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:13px;
+color:#FF0000;
+}
+
+.estilo_contenido {
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:12px;
+color:#2c6333;
+}
+
+.estilo_ingreso {
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:13px;
+color:#003333;
+font-weight:bold;
+}
+
+.estilo_2 {
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:13px;
+color:#0066CC;
+font-weight:bold;
+}
+
+.estilo_bienvenido {
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:30px;
+color:#33CCFF;
+}
+
+#terminos {
+width:850px;
+float:left;
+margin-top:15px;
+margin-left:60px;
+font-size:14px;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+color:#333333;
+text-align:center;
+}
+
+#caja_ayuda{
+width:800px;
+height:auto;
+float:left;
+margin-top:35px;
+margin-left:100px;
+font-size:12px;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+color:#0000CC;
+text-align:center;
+}
+
+#caja_registrado{
+width:800px;
+height:auto;
+float:left;
+margin-top:20px;
+margin-left:100px;
+font-size:12px;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+color:#0000CC;
+font-style:oblique;
+text-align:center;
+}
+
+#caja_registrado2{
+width:800px;
+height:auto;
+float:left;
+margin-top:40px;
+margin-left:100px;
+font-size:12px;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+color:#0000CC;
+font-style:oblique;
+text-align:center;
+}
+
+
+#botonera_horizontal {
+width:800px;
+float:left;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:14px;
+color:#666666;
+margin-top:30px;
+margin-bottom:20px;
+margin-left:100px;
+text-align:center;
+}
+
+.estilo_pin {
+font-size:17px;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+color:#CC0033;
+
+
+
+}
