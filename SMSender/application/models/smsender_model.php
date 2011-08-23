@@ -16,6 +16,11 @@ class smsender_model extends CI_Model {
         return $this->db->insert_id();
     }
     
+    function updateRequest($id,$params) {
+        $this->db->where('id', $id);
+        $this->db->update('requests', $params); 
+    }
+    
     function saveCheckUserRequest($params) {
         $this->db->insert('check_user_requests', $params);
     }

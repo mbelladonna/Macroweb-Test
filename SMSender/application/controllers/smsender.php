@@ -46,7 +46,91 @@ class smsender extends MY_Controller {
     private function _authorizeRequest($nroMovil) {
         return $this->smsender_model->countMessagesToday($nroMovil) < $this->limite_mensajes_diarios;
     }
+    
+    /*
+    ** Existencia de los datos del formulario
+    */
+    private function _existsData($namedata) {
+        return $this->input->post($namedata);
+    }
+    
+    /*
+    ** Acciones a realizar si el usuario es nuevo
+    */    
+    private function _userNew($request_id, $data ){
+    
+        // Usuario no subscripto
+        
+        // Solicitar al gw envio de pin a numero origen
+        $params = array(
+            'nroPhone' => $data['origen_subno'],
+        );
+        //$response = $this->curl->_simple_call('get', $this->send_pin_url, $params);
 
+        // Quitar comentarios para forzar rstas del gateway para pruebas
+         $response = '{"rsp":"ok"}'; //-- PIN enviado
+        // $response = '{"rsp":"error"}'; //-- Error en envio
+        // $response = FALSE; //-- Error en comunicacion con gw
+        
+        // Actualizo DB
+        $sendpin_request_row = array(
+            'request_id' => $request_id,
+            'send_pin_response' => $response
+        );
+        $this->smsender_model->saveSendPinRequest($sendpin_request_row);
+        
+        if ($response != FALSE){
+            $response = json_decode($response);                
+            if ($response->rsp == 'ok') {
+                $this->session->set_userdata('last_sendpin', $request_id);
+                redirect("/smsender/checkPin/$request_id");    
+            } 
+            else {
+                $this->data['error'] = 'Usuario no encontrado. Se produjo un error al intentar enviar pin';;
+            }
+        } else {
+            $this->data['error'] = 'Se produjo un error al intentar comunicacion con gateway';
+        }
+    
+    }
+
+    /*
+    ** Acciones a realizar si quiere acceder un usuario registrado
+    */
+    private function _userRegister($request_id, $data) {
+    
+        // Chequeo de subscripción
+        $paramscheck = array(
+            'nroPhone' => $data['origen_subno'],
+            'passwd' => $data['password'],
+        );
+        //$responsecheck = $this->curl->_simple_call('get', $this->check_user_url, $paramscheck);
+        
+          x  $responsecheck = '{"rsp":"ok"}'; //-- Existe el usuario
+        // $responsecheck = '{"rsp":"error"}'; //-- Error 
+        // $responsecheck = FALSE; //-- Error en comunicacion con gw
+        
+        $checkuser_request_row = array(
+            'request_id' => $request_id,
+            'check_user_response' => $responsecheck
+        );
+        $this->smsender_model->saveCheckUserRequest($checkuser_request_row);
+        
+        
+        if ($responsecheck != FALSE){
+            $responsecheck = json_decode($responsecheck);                
+            if ($responsecheck->rsp == 'ok') {
+                // Usuario subscripto. Mando mensaje.
+                redirect("/smsender/sendmessageregister/$request_id");     
+            } else {
+                $this->data['error'] = 'Usuario no encontrado.';
+            }
+        } else {
+            $this->data['error'] = 'Se produjo un error al intentar comunicacion con gateway';
+        }       
+    }
+    
+    
     /*
     ** Controlador principal
     */
@@ -54,94 +138,62 @@ class smsender extends MY_Controller {
         // $this->output->enable_profiler(TRUE);
 
         // Procesamiento de datos de formulario
-        if ($this->input->post('data')){
+        if ( $this->_existsData('datanuevo') ) {  //if ($this->input->post('datanuevo')){
 
-            $data = $this->input->post('data');
+            $data = $this->input->post('datanuevo');
             
             $request_row = array(
                 'origen_subno' => $data['origen_subno'],
-                'password' => $data['password'],
                 'destino_subno' => $data['destino_subno'],
                 'message' => $data['message'],
             );
             $request_id = $this->smsender_model->saveRequest($request_row);
-
+            
             if ($this->_authorizeRequest($data['origen_subno'])) {
                 
                 $this->session->set_userdata('last_request', $request_id);
                 
-                // Chequeo de subscripción
-                $paramscheck = array(
-                    'nroPhone' => $data['origen_subno'],
-                    'passwd' => $data['password'],
-                );
-                $responsecheck = $this->curl->_simple_call('get', $this->check_user_url, $paramscheck);
-                
-                // Quitar comentarios para forzar rstas del gateway para pruebas
-                // $responsecheck = '{"rsp":"ok"}'; //-- Existe el usuario
-                // $responsecheck = '{"rsp":"error"}'; //-- Error 
-                // $responsecheck = FALSE; //-- Error en comunicacion con gw
-                
-                $checkuser_request_row = array(
-                    'request_id' => $request_id,
-                    'check_user_response' => $responsecheck
-                );
-                $this->smsender_model->saveCheckUserRequest($checkuser_request_row);
-                
-                if ($responsecheck != FALSE) {
-                    $responsecheck = json_decode($responsecheck);                
-                    if ($responsecheck->rsp == 'ok') {
-                        // Usuario subscripto. Mando mensaje.
-                        redirect("/smsender/sendMessage/$request_id");     
-                    } else {
-                        // Usuario no subscripto
-                        // Solicitar al gw envio de pin a numero origen
-                        $params = array(
-                            'nroPhone' => $data['origen_subno'],
-                        );
-                        $response = $this->curl->_simple_call('get', $this->send_pin_url, $params);
-
-                        // Quitar comentarios para forzar rstas del gateway para pruebas
-                        // $response = '{"rsp":"ok"}'; //-- PIN enviado
-                        // $response = '{"rsp":"error"}'; //-- Error en envio
-                        // $response = FALSE; //-- Error en comunicacion con gw
-                        
-                        $sendpin_request_row = array(
-                            'request_id' => $request_id,
-                            'send_pin_response' => $response
-                        );
-                        $this->smsender_model->saveSendPinRequest($sendpin_request_row);
-                        
-                        if ($response != FALSE){
-                            $response = json_decode($response);                
-                            if ($response->rsp == 'ok') {
-                                // Pasar a checkpin
-                                $this->session->set_userdata('last_sendpin', $request_id);
-                                redirect("/smsender/checkPin/$request_id");    
-                            } else {
-                                $this->data['error'] = 'Usuario no encontrado. Se produjo un error al intentar enviar pin';
-                            }
-                        } else {
-                            $this->data['error'] = 'Se produjo un error al intentar comunicacion con gateway';
-                        }
-                    }
-                } else {
-                    $this->data['error'] = 'Se produjo un error al intentar comunicacion con gateway';
-                }
+                $this->_userNew($request_id, $data);             
+                                 
             } else {
                 // Request no autorizado
-                $this->data['error'] = "Ha alcanzado su limite diario de {$this->limite_mensajes_diarios} mensajes";
+                $this->data['error'] = 'Ha alcanzado su limite diario de {$this->limite_mensajes_diarios} mensajes';
             }
-        } else {
-            // Controlador accedido por GET
             
-            // Verificar si hay mensajes en sesion
-            $this->data["error"] = $this->session->userdata('sendmessage_error');
-            $this->session->unset_userdata('sendmessage_error');
-            $this->data["status_message"] = $this->session->userdata('sendmessage_ok');
-            $this->session->unset_userdata('sendmessage_ok');
-        }
+        } else {
+        
+            if ($this->_existsData('dataregistrado')) {
 
+                // Es usuario registrado
+                $dataregistrado = $this->input->post('dataregistrado');
+                
+                $request_row = array(
+                    'origen_subno' => $dataregistrado['origen_subno'],
+                    'password' => $dataregistrado['password'],
+                );
+                $request_id = $this->smsender_model->saveRequest($request_row);
+
+                if ($this->_authorizeRequest($dataregistrado['origen_subno'])) {
+                    
+                    $this->session->set_userdata('last_request', $request_id);
+                    
+                    $this->_userRegister($request_id, $dataregistrado);
+                                      
+                } else {
+                    // Request no autorizado
+                    $this->dataregistrado['error'] = "Ha alcanzado su limite diario de {$this->limite_mensajes_diarios} mensajes";
+                }
+                
+            } else {
+                // Controlador accedido por GET
+            
+                // Verificar si hay mensajes en sesion
+                $this->data["error"] = $this->session->userdata('sendmessage_error');
+                $this->session->unset_userdata('sendmessage_error');
+                $this->data["status_message"] = $this->session->userdata('sendmessage_ok');
+                $this->session->unset_userdata('sendmessage_ok');
+            }
+        }
         $this->data['content'] = $this->load->view('SMSender/smsender', $this->data, TRUE);
         $this->load->view($this->template, $this->data);
 	}
@@ -174,10 +226,10 @@ class smsender extends MY_Controller {
                 'nroPhone' => $request[0]->origen_subno,
                 'pin' => $data['pin_insert'],
             );
-            $response = $this->curl->_simple_call('get', $this->check_pin_url, $params);
+            //$response = $this->curl->_simple_call('get', $this->check_pin_url, $params);
                        
             // Quitar comentarios para forzar rstas del gateway para pruebas
-            // $response = '{"rsp":"ok"}'; //-- PIN check ok
+             $response = '{"rsp":"ok"}'; //-- PIN check ok
             // $response = '{"rsp":"error"}'; //-- PIN check not ok
             // $response = FALSE; //-- Error en comunicacion con gw
 
@@ -206,53 +258,118 @@ class smsender extends MY_Controller {
         $this->load->view($this->template, $this->data);        
     }
     
+    
     /*
-    ** Envio de mensaje
+    ** Envio de mensaje usuario nuevo
     */
     public function sendMessage($id) {
-        
+         
         // Permitir acceso a enviar mensaje solo al ultimo request
         $last_request = $this->session->userdata('last_request');
         if ($id != $last_request) {
             redirect("/smsender/index");   
         }
 
-        $params = array(
+         $params = array(
             'id' => $id
-        );
-        $request = $this->smsender_model->loadRequest($params);
-        $this->data['request'] = $request[0];
-       
-        // Variables para envio del mensaje
-        $params = array(
+         );
+         $request = $this->smsender_model->loadRequest($params);
+         $this->datanuevo['request'] = $request[0];
+                 
+        
+         // Variables para envio del mensaje
+         $params = array(                
             'usr' => $this->usr,
             'pwd' => $this->pwd,
             'app' => $this->app,
             'sNumber' => $this->sNumber,
             'tNumber' => $request[0]->destino_subno,
             'mBody' => $request[0]->message,
-        );
-        $response = $this->curl->_simple_call('post', $this->send_message_url, $params);
-                       
+         );
+         
+        // $response = $this->curl->_simple_call('post', $this->send_message_url, $params);
+                        
         // Quitar comentarios para forzar rstas del gateway para pruebas
-        // $response = '200';    //-- mensaje enviado
+         $response = '200';    //-- mensaje enviado
         // $response = '400'; //-- Error 
-
-        // Salvar sendmessage request            
-        $sendmessage_request_row = array(
+ 
+         // Salvar sendmessage request
+         $sendmessage_request_row = array(
             'request_id' => $id,
             'send_message_response' => $response
         );
         $this->smsender_model->saveSendMessageRequest($sendmessage_request_row);
-            
+                        
         if ($response == '200') {
             // Envio correcto del  mensaje
             $this->session->set_userdata ('sendmessage_ok', 'Mensaje enviado correctamente');
             $this->session->unset_userdata('last_request');
+              
         } else {
             $this->session->set_userdata ('sendmessage_error', 'Error en el envio del mensaje');
         }
         redirect("/smsender/index"); 
+    }
+    
+    /*
+    ** Envio de mensaje para usuarios registrados
+    */
+    public function sendMessageRegister($id) {
+        
+        // Permitir acceso a enviar mensaje solo al ultimo request
+        $last_request = $this->session->userdata('last_request');
+        if ($id != $last_request) {
+            redirect("/smsender/index");   
+        }
+        
+        if ($this->_existsData('dataregistrado')){
+            
+            $dataregistrado = $this->input->post('dataregistrado');
+            
+            $params = array(
+                'destino_subno' => $dataregistrado['destino_subno'],
+                'message' => $dataregistrado['message']
+            );
+            $request = $this->smsender_model->updateRequest($id,$params);
+                                  
+           
+            // Variables para envio del mensaje
+            $params = array(
+                'usr' => $this->usr,
+                'pwd' => $this->pwd,
+                'app' => $this->app,
+                'sNumber' => $this->sNumber,
+                'tNumber' => $dataregistrado['destino_subno'],//$request[0]->destino_subno,
+                'mBody' => $dataregistrado['message'],//$request[0]->message,
+            );
+            
+            //$response = $this->curl->_simple_call('post', $this->send_message_url, $params);
+                
+                           
+            // Quitar comentarios para forzar rstas del gateway para pruebas
+            $response = '200'; //-- mensaje enviado
+            // $response = '400'; //-- Error 
+
+            // Salvar sendmessage request            
+            $sendmessage_request_row = array(
+                'request_id' => $id,
+                'send_message_response' => $response
+            );
+            $this->smsender_model->saveSendMessageRequest($sendmessage_request_row);
+                            
+            if ($response == '200') {
+                // Envio correcto del  mensaje
+                $this->session->set_userdata ('sendmessage_ok', 'Mensaje enviado correctamente');
+                $this->session->unset_userdata('last_request');
+                  
+            } else {
+                $this->session->set_userdata ('sendmessage_error', 'Error en el envio del mensaje');
+            }
+            redirect("/smsender/index"); 
+        }
+        $this->data['content'] = $this->load->view('SMSender/registrados', $this->data, TRUE);
+        $this->load->view($this->template, $this->data);
+        
     }
 }
 
