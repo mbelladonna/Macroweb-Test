@@ -30,7 +30,10 @@
 <?                      
     if (isset($status_message)) :
 ?>
-    <div class="message"><?echo $status_message?></div>
+    <div class="message">
+        <?echo img(array('src'=>'/assets/img/ok.png', 'width'=>'16', 'height'=>'16', 'align'=>'absmiddle', 'alt'=>'message'));?>
+        <?echo $status_message?>
+    </div>
 <?
     unset($status_message);
     endif;

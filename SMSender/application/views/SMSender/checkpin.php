@@ -1,9 +1,19 @@
+<script type="text/javascript">
+   $(document).ready(function(){
+        $("#checkpin").validate();
+        $("#pin_insert").rules("add", reglas_pin);
+   });
+</script>
+
 <div id="titular22">Para terminar con la operación, Introduce el número de PIN que has recibido en tu móvil.</div>
 
 <?                      
     if (isset($error)) :
 ?>
-    <div class="error"><?echo $error?></div>
+    <div class="error">
+        <?echo img(array('src'=>'/assets/img/alert.png', 'width'=>'16', 'height'=>'16', 'align'=>'absmiddle', 'alt'=>'alerta'));?>
+        <?echo $error?>
+    </div>
 <?
     unset($error);
     endif;
@@ -14,12 +24,12 @@
 </div>
    
 <div id="caja_der">
-    <? echo form_open(current_url(), array('method' => 'post')); ?>
+    <? echo form_open(current_url(), array('method' => 'post', 'id'=>'checkpin')); ?>
         <div id="caja_pin">
             <div id="texto_msjes">
                 <span class="estilo_pin">Introducir PIN:</span>        
                 <label>
-                    <? echo form_input(array('name'=>'data[pin_insert]', 'class'=>'estilo_pin', 'size'=>'10', 'maxlength'=>'4')); ?>
+                    <? echo form_input(array('name'=>'data[pin_insert]', 'class'=>'estilo_pin', 'size'=>'10', 'maxlength'=>'4', 'id'=>'pin_insert')); ?>
                 </label>
             </div>
         </div>
