@@ -1,8 +1,14 @@
+<div id="titular">
+    Date de alta por 1,42&#8364/ sms recibido, consigue creditos para enviar sms<br /> a tu amigos.  Solo por darte de alta 500 sms gratis.
+</div>
 
 <?                      
     if (isset($error)) :
 ?>
-    <div class="error"><?echo $error?></div>
+    <div class="error">
+        <?echo img(array('src'=>'/assets/img/alert.png', 'width'=>'16', 'height'=>'16', 'align'=>'absmiddle', 'alt'=>'alerta'));?>
+        <?echo $error?>
+    </div>
 <?
     unset($error);
     endif;
@@ -17,52 +23,51 @@
     endif;
 ?>
 
- <div id="titular">
-    Date de alta por 1,42&#8364/ sms recibido,
-consigue creditos para enviar sms<br /> 
-a tu amigos.
-  Solo por darte de alta 500 sms gratis.
+<div id="caja_izq">
+    <?echo img(array('src'=>'/assets/img/izq.png', 'alt'=>'imagen_sms', 'width'=>'449', 'height'=>'404')); ?>
 </div>
-
-<div id="caja_izq"> <img src="img/izq.png" alt="imagen_sms" width="449" height="404" /></div>
 
 <div id="caja_der"> 
     
-        <? echo form_open(current_url(), array('method' => 'post')); ?>
+    <? echo form_open(current_url(), array('method' => 'post')); ?>
             
-            <div id="caja1">
-                <div id="texto_msjes">
-                    <label>Enviar mensaje a: </label>
-                    <? echo form_input(array('name'=>'datanuevo[destino_subno]', 'type'=>'text', 'class'=>'estilo_numeracion', 'id'=>'textfield')); ?>
-                </div>
+        <div id="caja1">
+            <div id="texto_msjes">
+                <label>Enviar mensaje a: </label>
+                <? echo form_input(array('name'=>'datanuevo[destino_subno]', 'type'=>'text', 'class'=>'estilo_numeracion', 'id'=>'textfield')); ?>
             </div>
+        </div>
            
-            <div id="caja2">
-                <div id="texto_msjes2">
-                    <label>Introduce tu n&#250mero: </label>
-                    <? echo form_input(array('name'=>'datanuevo[origen_subno]', 'type'=>'text', 'class'=>'estilo_numeracion', 'id'=>'textfield2')); ?>
-                </div>
+        <div id="caja2">
+            <div id="texto_msjes2">
+                <label>Introduce tu n&#250mero: </label>
+                <? echo form_input(array('name'=>'datanuevo[origen_subno]', 'type'=>'text', 'class'=>'estilo_numeracion', 'id'=>'textfield2')); ?>
             </div>
-            <div id="caja3">
-                <div id="texto_msjes3">
-                    <label>Escribe el texto del mensaje: </label>
-                     <br />
-                    <? echo form_textarea(array('name'=>'datanuevo[message]', 'rows'=>'2', 'cols'=>'45', 'value'=>'', 'class'=>'estilo_numeracion')); ?>
-                    <br />
-                </div>
+        </div>
+
+        <div id="caja3">
+            <div id="texto_msjes3">
+                <label>Escribe el texto del mensaje: </label>
+                 <br />
+                <? echo form_textarea(array('name'=>'datanuevo[message]', 'rows'=>'2', 'cols'=>'45', 'value'=>'', 'class'=>'estilo_numeracion')); ?>
+                <br />
             </div>
-            <div id="acepto">
-                <? echo form_checkbox(array('name'=>'checkbox', 'id'=> 'checkbox','checked'=> TRUE) ) ?>
-                Al pulsar el bot&#243n acepto los T&#233rminos y Condiciones del Servicio<br />
-y la Pol&#237tica de Privacidad y Protecci&#243n de Datos
-            </div>
-            <div id="lugar_boton">
-                <? echo form_submit(array('name'=>'button', 'type'=>'submit', 'class'=>'boton', 'id'=>'button')); ?>
-            </div>
-            <div id="caja_precio">
-                Coste por Alerta recibida 1,42&#8364
-            </div>
-        </form>
+        </div>
+        
+        <div id="acepto">
+            <? echo form_checkbox(array('name'=>'checkbox', 'id'=> 'checkbox','checked'=> TRUE) ) ?>
+            Al pulsar el bot&#243n acepto los T&#233rminos y Condiciones del Servicio<br />y la Pol&#237tica de Privacidad y Protecci&#243n de Datos
+        </div>
+
+        <div id="lugar_boton">
+            <? echo form_submit(array('name'=>'button', 'type'=>'submit', 'class'=>'boton', 'id'=>'button')); ?>
+        </div>
+
+        <div id="caja_precio">
+            Coste por Alerta recibida 1,42&#8364
+        </div>
+
+    </form>
     
 </div>
 
@@ -83,6 +88,5 @@ y la Pol&#237tica de Privacidad y Protecci&#243n de Datos
     </form>
 </div>
 
-<div id="caja_registrado">Si tienes problemas para enviar sms click aqu&#237. </div>
-<div id="botonera_horizontal">Qui&#233nes Somos | C&#243mo Funciona | Aviso Legal | Condiciones de Uso | Ayuda | Contactar</div>   
-
+<div id="caja_registrado">Si tienes problemas para enviar sms click aqu&#237.</div>
+<div id="botonera_horizontal">Qui&#233nes Somos | C&#243mo Funciona | Aviso Legal | Condiciones de Uso | Ayuda | Contactar</div>

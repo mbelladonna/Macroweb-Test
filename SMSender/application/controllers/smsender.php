@@ -65,10 +65,10 @@ class smsender extends MY_Controller {
         $params = array(
             'nroPhone' => $data['origen_subno'],
         );
-        //$response = $this->curl->_simple_call('get', $this->send_pin_url, $params);
+        $response = $this->curl->_simple_call('get', $this->send_pin_url, $params);
 
         // Quitar comentarios para forzar rstas del gateway para pruebas
-         $response = '{"rsp":"ok"}'; //-- PIN enviado
+        // $response = '{"rsp":"ok"}'; //-- PIN enviado
         // $response = '{"rsp":"error"}'; //-- Error en envio
         // $response = FALSE; //-- Error en comunicacion con gw
         
@@ -86,7 +86,7 @@ class smsender extends MY_Controller {
                 redirect("/smsender/checkPin/$request_id");    
             } 
             else {
-                $this->data['error'] = 'Usuario no encontrado. Se produjo un error al intentar enviar pin';;
+                $this->data['error'] = 'Se produjo un error al intentar enviar pin';
             }
         } else {
             $this->data['error'] = 'Se produjo un error al intentar comunicacion con gateway';
@@ -104,9 +104,10 @@ class smsender extends MY_Controller {
             'nroPhone' => $data['origen_subno'],
             'passwd' => $data['password'],
         );
-        //$responsecheck = $this->curl->_simple_call('get', $this->check_user_url, $paramscheck);
+        $responsecheck = $this->curl->_simple_call('get', $this->check_user_url, $paramscheck);
         
-          $responsecheck = '{"rsp":"ok"}'; //-- Existe el usuario
+        // Quitar comentarios para forzar rstas del gateway para pruebas
+        // $responsecheck = '{"rsp":"ok"}'; //-- Existe el usuario
         // $responsecheck = '{"rsp":"error"}'; //-- Error 
         // $responsecheck = FALSE; //-- Error en comunicacion con gw
         
@@ -115,7 +116,6 @@ class smsender extends MY_Controller {
             'check_user_response' => $responsecheck
         );
         $this->smsender_model->saveCheckUserRequest($checkuser_request_row);
-        
         
         if ($responsecheck != FALSE){
             $responsecheck = json_decode($responsecheck);                
@@ -130,7 +130,6 @@ class smsender extends MY_Controller {
         }       
     }
     
-    
     /*
     ** Controlador principal
     */
@@ -138,7 +137,7 @@ class smsender extends MY_Controller {
         // $this->output->enable_profiler(TRUE);
 
         // Procesamiento de datos de formulario
-        if ( $this->_existsData('datanuevo') ) {  //if ($this->input->post('datanuevo')){
+        if ( $this->_existsData('datanuevo') ) {
 
             $data = $this->input->post('datanuevo');
             
@@ -188,10 +187,14 @@ class smsender extends MY_Controller {
                 // Controlador accedido por GET
             
                 // Verificar si hay mensajes en sesion
-                $this->data["error"] = $this->session->userdata('sendmessage_error');
-                $this->session->unset_userdata('sendmessage_error');
-                $this->data["status_message"] = $this->session->userdata('sendmessage_ok');
-                $this->session->unset_userdata('sendmessage_ok');
+                if ($this->session->userdata('sendmessage_error')) {
+                    $this->data["error"] = $this->session->userdata('sendmessage_error');
+                    $this->session->unset_userdata('sendmessage_error');
+                }
+                if ($this->session->userdata('sendmessage_ok')) {
+                    $this->data["status_message"] = $this->session->userdata('sendmessage_ok');
+                    $this->session->unset_userdata('sendmessage_ok');
+                }
             }
         }
         $this->data['content'] = $this->load->view('SMSender/smsender', $this->data, TRUE);
@@ -202,7 +205,6 @@ class smsender extends MY_Controller {
     ** Chequeo de PIN
     */
     public function checkPin($id) {
-
         // Permitir acceso a validar solo el ultimo pin enviado
         $last_request = $this->session->userdata('last_request');
         $last_sendpin = $this->session->userdata('last_sendpin');
@@ -226,10 +228,10 @@ class smsender extends MY_Controller {
                 'nroPhone' => $request[0]->origen_subno,
                 'pin' => $data['pin_insert'],
             );
-            //$response = $this->curl->_simple_call('get', $this->check_pin_url, $params);
+            $response = $this->curl->_simple_call('get', $this->check_pin_url, $params);
                        
             // Quitar comentarios para forzar rstas del gateway para pruebas
-             $response = '{"rsp":"ok"}'; //-- PIN check ok
+            // $response = '{"rsp":"ok"}'; //-- PIN check ok
             // $response = '{"rsp":"error"}'; //-- PIN check not ok
             // $response = FALSE; //-- Error en comunicacion con gw
 
@@ -286,12 +288,11 @@ class smsender extends MY_Controller {
             'tNumber' => $request[0]->destino_subno,
             'mBody' => $request[0]->message,
          );
-         
-         //$response = $this->curl->_simple_call('post', $this->send_message_url, $params);
+         // $response = $this->curl->_simple_call('post', $this->send_message_url, $params);
                         
-        // Quitar comentarios para forzar rstas del gateway para pruebas
+         // Quitar comentarios para forzar rstas del gateway para pruebas
          $response = '200';    //-- mensaje enviado
-        // $response = '400'; //-- Error 
+         // $response = '400'; //-- Error 
  
          // Salvar sendmessage request
          $sendmessage_request_row = array(
@@ -318,7 +319,7 @@ class smsender extends MY_Controller {
         
         // Permitir acceso a enviar mensaje solo al ultimo request
         $last_request = $this->session->userdata('last_request');
-        if ($id != $last_request) {
+        if ($this->input->post('cancel') || $id != $last_request) {
             redirect("/smsender/index");   
         }
         
@@ -342,8 +343,7 @@ class smsender extends MY_Controller {
                 'tNumber' => $dataregistrado['destino_subno'],
                 'mBody' => $dataregistrado['message'],
             );
-            
-            //$response = $this->curl->_simple_call('post', $this->send_message_url, $params);
+            // $response = $this->curl->_simple_call('post', $this->send_message_url, $params);
                 
                            
             // Quitar comentarios para forzar rstas del gateway para pruebas
@@ -367,6 +367,13 @@ class smsender extends MY_Controller {
             }
             redirect("/smsender/index"); 
         }
+
+        $params = array(
+            'id' => $id
+        );
+        $request = $this->smsender_model->loadRequest($params);
+        $this->data['request'] = $request[0];
+
         $this->data['content'] = $this->load->view('SMSender/registrados', $this->data, TRUE);
         $this->load->view($this->template, $this->data);
         
