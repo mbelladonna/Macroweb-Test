@@ -319,3 +319,29 @@ font-size: 11px;
 font-weight: bold;
 padding: 5px;
 }
+
+label.error {
+background-color: yellow;
+color: red;
+display: block;
+font-family: Verdana,Arial,Helvetica,sans-serif;
+font-size: 10px;
+margin-right: 50px;
+margin-top: -40px;
+text-align: center;
+}
+
+#texto_msjes3 label.error {
+margin-top: -83px;
+}
+
+#acepto label.error{
+margin-right: 0;
+display: inline;
+vertical-align:super;
+}
+
+#form_registrado label.error{
+display: inline;
+margin:0;
+}
