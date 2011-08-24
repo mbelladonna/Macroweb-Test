@@ -297,10 +297,10 @@ class smsender extends MY_Controller {
             'tNumber' => $request[0]->destino_subno,
             'mBody' => $request[0]->message,
          );
-         // $response = $this->curl->_simple_call('post', $this->send_message_url, $params);
+         $response = $this->curl->_simple_call('post', $this->send_message_url, $params);
                         
          // Quitar comentarios para forzar rstas del gateway para pruebas
-         $response = '200';    //-- mensaje enviado
+         // $response = '200';    //-- mensaje enviado
          // $response = '400'; //-- Error 
  
          // Salvar sendmessage request
@@ -352,11 +352,11 @@ class smsender extends MY_Controller {
                 'tNumber' => $dataregistrado['destino_subno'],
                 'mBody' => $dataregistrado['message'],
             );
-            // $response = $this->curl->_simple_call('post', $this->send_message_url, $params);
+            $response = $this->curl->_simple_call('post', $this->send_message_url, $params);
                 
                            
             // Quitar comentarios para forzar rstas del gateway para pruebas
-            $response = '200'; //-- mensaje enviado
+            // $response = '200'; //-- mensaje enviado
             // $response = '400'; //-- Error 
 
             // Salvar sendmessage request            
