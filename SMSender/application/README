@@ -4,4 +4,11 @@ Descripcion:
     Formulario para enviar mensajes de texto.
 
 Esquema DB:
-    /config/DB/schema.sql  
+    /config/DB/schema.sql
+
+Instrucciones para enviar cambios al esquema de DB:
+    Luego de exportar el esquema de la DB y antes de enviar los cambios al repositorio asegurarse que en la sentencia de creacion de las vistas no se incluya nada entre las palabras claves CREATE y VIEW. Si este no fuera el caso, eliminar las mismas.
+
+Instrucciones para deploy:
+    Crear base de datos 'smsender' vacia. Atencion: hacer DROP y CREATE si ya tuviese una DB 'smsender', caso contrario los cambios no se aplicaran a las tablas que ya existiesen.
+    Importar esquema de DB.      
