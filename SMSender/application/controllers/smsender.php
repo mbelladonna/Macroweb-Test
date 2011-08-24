@@ -120,14 +120,18 @@ class smsender extends MY_Controller {
         if ($responsecheck != FALSE){
             $responsecheck = json_decode($responsecheck);                
             if ($responsecheck->rsp == 'ok') {
-                // Usuario subscripto. Mando mensaje.
-                redirect("/smsender/sendmessageregister/$request_id");     
+                if ($this->_authorizeRequest($data['origen_subno'])) {
+                    // Usuario subscripto. Mando mensaje.
+                    redirect("/smsender/sendmessageregister/$request_id");
+                } else {
+                    $this->data['error'] = "Ha alcanzado su limite diario de {$this->limite_mensajes_diarios} mensajes";
+                }
             } else {
                 $this->data['error'] = 'Usuario no encontrado.';
             }
         } else {
             $this->data['error'] = 'Se produjo un error al intentar comunicacion con gateway';
-        }       
+        }
     }
     
     /*
@@ -246,15 +250,20 @@ class smsender extends MY_Controller {
             if ($response != FALSE){
                 $response = json_decode($response);                
                 if ($response->rsp == 'ok') {
-                    // Mandar mensaje
-                     $this->session->unset_userdata('last_sendpin');
-                    redirect("/smsender/sendMessage/$id"); 
+                    if ($this->_authorizeRequest($request[0]->origen_subno)) {
+                        // Mandar mensaje
+                        $this->session->unset_userdata('last_sendpin');
+                        redirect("/smsender/sendMessage/$id"); 
+                    } else {
+                        $this->data['error'] = "Ha alcanzado su limite diario de {$this->limite_mensajes_diarios} mensajes";
+                    }
                 } else {
                     $this->data['error'] = 'Error al chequear el pin';
                 }
             } else {
                 $this->data['error'] = 'Error en comunicación con gateway';
-            }            
+            }
+
         }
         $this->data['content'] = $this->load->view('SMSender/checkpin', $this->data, TRUE);
         $this->load->view($this->template, $this->data);        

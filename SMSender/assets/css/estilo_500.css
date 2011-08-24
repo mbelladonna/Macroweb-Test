@@ -360,7 +360,7 @@ display: inline;
 margin:0;
 }
 
-#texto_msjes label.error{
+#form_send_registrado #caja1 #texto_msjes label.error{
 margin-right: 70px;
 margin-top: -43px;
 }
