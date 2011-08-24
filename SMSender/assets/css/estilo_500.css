@@ -340,8 +340,13 @@ margin-top: -40px;
 text-align: center;
 }
 
-#texto_msjes3 label.error {
+#caja3 #texto_msjes3 label.error {
 margin-top: -83px;
+}
+
+#caja2_3 #texto_msjes3 label.error {
+margin-top: -99px;
+margin-right: 70px;
 }
 
 #acepto label.error{

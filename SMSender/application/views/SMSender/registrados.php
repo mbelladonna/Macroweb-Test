@@ -1,3 +1,12 @@
+<script type="text/javascript">
+   $(document).ready(function(){
+        $("#form_send_registrado").validate();
+        $("#destino_subno").rules("add", reglas_telefono);
+        $("#message").rules("add", reglas_mensaje); 
+        $("#term_check").rules("add", reglas_terminos);
+   });
+</script>
+
 <div id="titular22">
     Bienvenido <span class="estilo_bienvenido"><? echo $request->origen_subno; ?></span>, Podrás enviar hasta 2 sms por día.
 </div>
@@ -5,18 +14,12 @@
 <?                      
     if (isset($error)) :
 ?>
-    <div class="error"><?echo $error?></div>
+    <div class="error">
+        <?echo img(array('src'=>'/assets/img/alert.png', 'width'=>'16', 'height'=>'16', 'align'=>'absmiddle', 'alt'=>'alerta'));?>
+        <?echo $error?>
+    </div>
 <?
     unset($error);
-    endif;
-?>
-
-<?                      
-    if (isset($status_message)) :
-?>
-    <div class="message"><?echo $status_message?></div>
-<?
-    unset($status_message);
     endif;
 ?>
 
@@ -26,13 +29,13 @@
 
 <div id="caja_der">
 
-    <? echo form_open(current_url(), array('method' => 'post')); ?>
+    <? echo form_open(current_url(), array('method' => 'post', 'id'=>'form_send_registrado')); ?>
     
         <div id="caja1">
             <div id="texto_msjes">
                 Enviar Mensaje a:         
                 <label>
-                    <? echo form_input(array('name'=>'dataregistrado[destino_subno]', 'class'=>'estilo_numeracion')); ?>
+                    <? echo form_input(array('name'=>'dataregistrado[destino_subno]', 'class'=>'estilo_numeracion', 'id'=>'destino_subno', 'maxlength'=>'9')); ?>
                 </label>
             </div>
         </div>
@@ -40,7 +43,7 @@
         <div id="caja2_3">
             <div id="texto_msjes3">Escribe el texto del mensaje:<br />
                 <br />
-                <? echo form_textarea(array('name'=>'dataregistrado[message]', 'rows'=>'2', 'cols'=>'45', 'value'=>'', 'class'=>'estilo_numeracion')); ?>
+                <? echo form_textarea(array('name'=>'dataregistrado[message]', 'rows'=>'2', 'cols'=>'45', 'value'=>'', 'class'=>'estilo_numeracion', 'id'=>'message', 'maxlength'=>'300')); ?>
                 <br />
                 <label></label>
             </div>
@@ -48,7 +51,7 @@
        
         <div id="acepto">
             <label>
-                <? echo form_checkbox(array('name'=>'checkbox', 'id'=> 'checkbox','checked'=> TRUE) ) ?>
+                <? echo form_checkbox(array('name'=>'checkbox', 'id'=> 'checkbox','checked'=> TRUE, 'id'=>'term_check') ) ?>
             </label>
             Al pulsar el botón acepto los Términos y Condiciones del Servicio <br /> y la Política de Privacidad y Protección de Datos
         </div>
@@ -60,7 +63,7 @@
         </div>
         
         <div id="caja_cancelar">
-            <? echo form_submit(array('name'=>'cancel', 'class'=>'boton_cancelar', 'value'=>' ')); ?>
+            <? echo form_submit(array('name'=>'cancel', 'class'=>'boton_cancelar cancel', 'value'=>' ')); ?>
         </div>
 
         <div id="caja_precio">Coste por Alerta recibida 1,42€</div>

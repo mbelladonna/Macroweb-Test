@@ -41,7 +41,7 @@
                 </label>
             </div>
             <div id="caja_cancelar2">
-                <? echo form_submit(array('name'=>'cancel', 'class'=>'boton_cancelar', 'value'=>' ')); ?>
+                <? echo form_submit(array('name'=>'cancel', 'class'=>'boton_cancelar cancel', 'value'=>' ')); ?>
             </div>
         </div>
     </form>
