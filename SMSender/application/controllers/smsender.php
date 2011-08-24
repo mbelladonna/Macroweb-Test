@@ -156,7 +156,7 @@ class smsender extends MY_Controller {
                                  
             } else {
                 // Request no autorizado
-                $this->data['error'] = 'Ha alcanzado su limite diario de {$this->limite_mensajes_diarios} mensajes';
+                $this->data['error'] = "Ha alcanzado su limite diario de {$this->limite_mensajes_diarios} mensajes";
             }
             
         } else {
