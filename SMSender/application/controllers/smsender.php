@@ -86,7 +86,7 @@ class smsender extends MY_Controller {
                 redirect("/smsender/checkPin/$request_id");    
             } 
             else {
-                $this->data['error'] = 'Se produjo un error al intentar enviar pin';
+                $this->data['error'] = 'Debes indicar correctamente tu tel&eacute;fono m&oacute;vil, corrigelo e intenta de nuevo.';
             }
         } else {
             $this->data['error'] = 'Se produjo un error al intentar comunicacion con gateway';
