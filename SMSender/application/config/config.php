@@ -24,6 +24,9 @@ if (isset($_SERVER['HTTP_HOST'])) {
         case "localhost":
             define('SITE_URL', 'local', TRUE);
             break;
+        case "500smsgratis.com":
+            define('SITE_URL', 'production', TRUE);
+            break;
     }
 } else {
     define('SITE_URL', 'production', TRUE);
@@ -32,6 +35,11 @@ if (isset($_SERVER['HTTP_HOST'])) {
 if (SITE_URL == "local") {
     $urlBase = "http://localhost/SMSender/";
     $indexPage = "index.php";
+} else if (SITE_URL == "production"){
+    $urlBase = "http://500smsgratis.com/";
+    $indexPage = "index.php";
+} else {
+    die ("Error: SITE_URL invalido.-");
 }
 
 $config['base_url'] = $urlBase;

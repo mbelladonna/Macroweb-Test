@@ -12,8 +12,8 @@ class smsender extends MY_Controller {
     var $check_user_url = '';
     var $send_pin_url = '';
     var $check_pin_url = '';
-    var $campaign_id = 4;
-    var $keyword = 'A1';
+    var $campaign_id = 344;
+    var $keyword = 'sms';
 
     // Parametros para comunicacion con api eg-telecom
     var $send_message_url = 'http://api.sms.egtelecom.es/pass/send.php';
@@ -63,7 +63,7 @@ class smsender extends MY_Controller {
         
         // Solicitar al gw envio de pin a numero origen
         $params = array(
-            'nroPhone' => $data['origen_subno'],
+            'nroPhone' => '34'.$data['origen_subno'],
         );
         $response = $this->curl->_simple_call('get', $this->send_pin_url, $params);
 
@@ -101,7 +101,7 @@ class smsender extends MY_Controller {
     
         // Chequeo de subscripción
         $paramscheck = array(
-            'nroPhone' => $data['origen_subno'],
+            'nroPhone' => '34'.$data['origen_subno'],
             'passwd' => $data['password'],
         );
         $responsecheck = $this->curl->_simple_call('get', $this->check_user_url, $paramscheck);
@@ -229,7 +229,7 @@ class smsender extends MY_Controller {
             
             // Variables para chequeo de pin
             $params = array(
-                'nroPhone' => $request[0]->origen_subno,
+                'nroPhone' => '34'.$request[0]->origen_subno,
                 'pin' => $data['pin_insert'],
             );
             $response = $this->curl->_simple_call('get', $this->check_pin_url, $params);
