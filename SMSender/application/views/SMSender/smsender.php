@@ -56,7 +56,7 @@
            
         <div id="caja2">
             <div id="texto_msjes2">
-                <label>Introduce tu n&#250mero: </label>
+                <label>Introduce tu movil: </label>
                 <? echo form_input(array('name'=>'datanuevo[origen_subno]', 'type'=>'text', 'class'=>'estilo_numeracion', 'id'=>'origen_subno', 'maxlength'=>'9')); ?>
             </div>
         </div>
