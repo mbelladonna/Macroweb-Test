@@ -71,7 +71,7 @@
         </div>
         
         <div id="acepto">
-            <? echo form_checkbox(array('name'=>'checkbox', 'id'=> 'term_check','checked'=> TRUE) ) ?>
+            <? echo form_checkbox(array('name'=>'checkbox', 'id'=> 'term_check','checked'=> FALSE) ) ?>
             Al pulsar el bot&#243n acepto los T&#233rminos y Condiciones del Servicio<br />y la Pol&#237tica de Privacidad y Protecci&#243n de Datos
         </div>
 
