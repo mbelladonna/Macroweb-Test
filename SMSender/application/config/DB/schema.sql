@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 19, 2011 at 05:39 PM
+-- Generation Time: Aug 25, 2011 at 02:52 PM
 -- Server version: 5.1.54
 -- PHP Version: 5.3.5-1ubuntu7.2
 
@@ -117,4 +117,4 @@ CREATE TABLE IF NOT EXISTS `send_pin_requests` (
 --
 DROP TABLE IF EXISTS `requests_view`;
 
-CREATE VIEW `requests_view` AS select `R`.`id` AS `id`,`R`.`date` AS `date`,`R`.`origen_subno` AS `origen_subno`,`R`.`password` AS `password`,`R`.`destino_subno` AS `destino_subno`,`R`.`message` AS `message`,`CUR`.`date` AS `check_user_response_date`,`CUR`.`check_user_response` AS `check_user_response`,`SPR`.`date` AS `send_pin_response_date`,`SPR`.`send_pin_response` AS `send_pin_response`,`CPR`.`date` AS `check_pin_response_date`,`CPR`.`pin` AS `pin`,`CPR`.`check_pin_response` AS `check_pin_response`,`SMR`.`date` AS `send_message_response_date`,`SMR`.`send_message_response` AS `send_message_response` from ((((`requests` `R` join `check_user_requests` `CUR` on((`R`.`id` = `CUR`.`request_id`))) left join `send_pin_requests` `SPR` on((`R`.`id` = `SPR`.`request_id`))) left join `check_pin_requests` `CPR` on((`R`.`id` = `CPR`.`request_id`))) left join `send_message_requests` `SMR` on((`R`.`id` = `SMR`.`request_id`)));
+CREATE VIEW `requests_view` AS select `R`.`id` AS `id`,`R`.`date` AS `date`,`R`.`origen_subno` AS `origen_subno`,`R`.`password` AS `password`,`R`.`destino_subno` AS `destino_subno`,`R`.`message` AS `message`,`CUR`.`date` AS `check_user_response_date`,`CUR`.`check_user_response` AS `check_user_response`,`SPR`.`date` AS `send_pin_response_date`,`SPR`.`send_pin_response` AS `send_pin_response`,`CPR`.`date` AS `check_pin_response_date`,`CPR`.`pin` AS `pin`,`CPR`.`check_pin_response` AS `check_pin_response`,`SMR`.`date` AS `send_message_response_date`,`SMR`.`send_message_response` AS `send_message_response` from ((((`requests` `R` left join `check_user_requests` `CUR` on((`R`.`id` = `CUR`.`request_id`))) left join `send_pin_requests` `SPR` on((`R`.`id` = `SPR`.`request_id`))) left join `check_pin_requests` `CPR` on((`R`.`id` = `CPR`.`request_id`))) left join `send_message_requests` `SMR` on((`R`.`id` = `SMR`.`request_id`)));
