@@ -42,10 +42,7 @@
        
         <div id="caja2_3">
             <div id="texto_msjes3">Escribe el texto del mensaje:<br />
-                <br />
-                <? echo form_textarea(array('name'=>'dataregistrado[message]', 'rows'=>'2', 'cols'=>'45', 'value'=>'', 'class'=>'estilo_numeracion', 'id'=>'message', 'maxlength'=>'300')); ?>
-                <br />
-                <label></label>
+                <? echo form_textarea(array('name'=>'dataregistrado[message]', 'rows'=>'4', 'cols'=>'45', 'value'=>'', 'class'=>'estilo_numeracion', 'id'=>'message', 'maxlength'=>'300')); ?>
             </div>
         </div>
        
