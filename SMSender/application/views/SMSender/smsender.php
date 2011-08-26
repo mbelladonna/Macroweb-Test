@@ -7,7 +7,7 @@
         $("#term_check").rules("add", reglas_terminos);    
         $("#form_registrado").validate();
         $("#registrado_origen_subno").rules("add", reglas_telefono);
-        $("#registrado_password").rules("add", reglas_pin);
+        $("#registrado_password").rules("add", reglas_password);
    });
 </script>
 
@@ -97,8 +97,8 @@
         <span class="estilo_ingreso">Tu Movil:</span>
         <? echo form_input(array('name'=>'dataregistrado[origen_subno]', 'class'=>'estilo_contenido', 'id'=>'registrado_origen_subno', 'maxlength'=>'9')); ?>
         
-        <span class="estilo_ingreso">Tu Pin:</span>
-        <? echo form_password(array('name'=>'dataregistrado[password]', 'class'=>'estilo_contenido', 'id'=>'registrado_password', 'size'=>'08', 'maxlength'=>'4')); ?>
+        <span class="estilo_ingreso">Tu Password:</span>
+        <? echo form_password(array('name'=>'dataregistrado[password]', 'class'=>'estilo_contenido', 'id'=>'registrado_password', 'size'=>'08', 'maxlength'=>'6')); ?>
                 
         <? echo form_submit(array('name'=>'button2', 'class'=>'estilo_2', 'id'=>'button2', 'value'=>'Entrar')); ?>
     </form>

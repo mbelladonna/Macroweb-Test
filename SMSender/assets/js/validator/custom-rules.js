@@ -38,3 +38,10 @@ var reglas_pin = {
     digits: true,
     maxlength: 4
 };
+
+// Password
+var reglas_password = {
+    required: true,
+    digits: true,
+    maxlength: 6
+};
