@@ -387,6 +387,55 @@ class smsender extends MY_Controller {
         $this->load->view($this->template, $this->data);
         
     }
+
+    /*
+    ** Aviso Legal
+    */
+    public function aviso(){
+        $this->data['content'] = $this->load->view('SMSender/aviso_legal.html', $this->data, TRUE);
+        $this->load->view($this->template, $this->data);
+    }
+
+    /*
+    ** Ayuda
+    */
+    public function ayuda(){
+        $this->data['content'] = $this->load->view('SMSender/ayuda.html', $this->data, TRUE);
+        $this->load->view($this->template, $this->data);
+    }
+
+    /*
+    ** Como funciona
+    */
+    public function comoFunciona(){
+        $this->data['content'] = $this->load->view('SMSender/como_funciona.html', $this->data, TRUE);
+        $this->load->view($this->template, $this->data);
+    }
+
+    /*
+    ** Problemas
+    */
+    public function problemas(){
+        $this->data['content'] = $this->load->view('SMSender/problemas.html', $this->data, TRUE);
+        $this->load->view($this->template, $this->data);
+    }
+
+    /*
+    ** Quienes somos
+    */
+    public function quienesSomos(){
+        $this->data['content'] = $this->load->view('SMSender/quienes_somos.html', $this->data, TRUE);
+        $this->load->view($this->template, $this->data);
+    }
+
+    /*
+    ** Condiciones de uso
+    */
+    public function condiciones(){
+        $this->data['content'] = $this->load->view('SMSender/uso.html', $this->data, TRUE);
+        $this->load->view($this->template, $this->data);
+    }
+
 }
 
 ?>
