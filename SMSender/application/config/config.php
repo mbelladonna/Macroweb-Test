@@ -24,6 +24,7 @@ if (isset($_SERVER['HTTP_HOST'])) {
         case "localhost":
             define('SITE_URL', 'local', TRUE);
             break;
+        case "www.500smsgratis.com":
         case "500smsgratis.com":
             define('SITE_URL', 'production', TRUE);
             break;
