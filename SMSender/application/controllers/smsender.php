@@ -13,7 +13,7 @@ class smsender extends MY_Controller {
     var $send_pin_url = '';
     var $check_pin_url = '';
     var $campaign_id = 344;
-    var $keyword = 'sms';
+    var $keyword = 'smsgratis';
 
     // Parametros para comunicacion con api eg-telecom
     var $send_message_url = 'http://api.sms.egtelecom.es/pass/send.php';
