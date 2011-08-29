@@ -28,7 +28,7 @@ var reglas_mensaje = {
 var reglas_terminos = {
     required: true,
     messages: {
-        required: "Debe aceptar los Terminos y Condiciones.",
+        required: "Debe aceptar los Terminos y Condiciones."
     }
 };
 
