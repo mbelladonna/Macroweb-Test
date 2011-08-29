@@ -13,6 +13,7 @@
         <div id="contenedor"> 
             <?=$content?>
             <div id="botonera_horizontal">
+                <?echo anchor('/', 'Inicio')?> |
                 <?echo anchor('smsender/quienesSomos', 'Qui&#233nes Somos')?> |
                 <?echo anchor('smsender/comoFunciona', 'C&#243mo Funciona')?> | 
                 <?echo anchor('smsender/aviso', 'Aviso Legal')?> | 
