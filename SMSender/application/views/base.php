@@ -12,6 +12,14 @@
     <body>
         <div id="contenedor"> 
             <?=$content?>
+            <div id="botonera_horizontal">
+                <?echo anchor('smsender/quienesSomos', 'Qui&#233nes Somos')?> |
+                <?echo anchor('smsender/comoFunciona', 'C&#243mo Funciona')?> | 
+                <?echo anchor('smsender/aviso', 'Aviso Legal')?> | 
+                <?echo anchor('smsender/condiciones', 'Condiciones de Uso')?> | 
+                <?echo anchor('smsender/ayuda', 'Ayuda')?> |
+                <?echo mailto('info@500smsgratis.com', 'Contactar')?>
+            </div>
         </div>
     </body>
 </html>

@@ -104,5 +104,4 @@
     </form>
 </div>
 
-<div id="caja_registrado">Si tienes problemas para enviar sms click aqu&#237.</div>
-<div id="botonera_horizontal">Qui&#233nes Somos | C&#243mo Funciona | Aviso Legal | Condiciones de Uso | Ayuda | Contactar</div>
+<div id="caja_registrado">Si tienes problemas para enviar sms click <?echo anchor('smsender/problemas', 'aqu&#237')?>.</div>

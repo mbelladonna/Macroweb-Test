@@ -48,5 +48,4 @@
 </div>
    
 <div id="terminos">Condiciones de uso: Terminos y Condiciones: Servicio de suscripción ofrecido por EG Telecom, Apdo. 61010 CP 28036 Madrid. Coste 1,42 euros por SMS recibido IVA incluido. Movistar: 15 SMS/mes. Otros: 25 SMS/mes. Para cancelar el servicio envía BAJA al 795266. Num. Atn. Clte. 902 052 846, sms@egtelecom.es</div>
-<div id="caja_registrado2">Si tienes problemas para enviar sms click aquí. </div>
-<div id="botonera_horizontal">Quiénes Somos | Cómo Funciona | Aviso Legal | Condiciones de Uso | Ayuda | Contactar</div>
+<div id="caja_registrado2">Si tienes problemas para enviar sms click <?echo anchor('smsender/problemas', 'aqu&#237')?>.</div>

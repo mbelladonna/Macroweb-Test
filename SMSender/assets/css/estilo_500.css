@@ -261,6 +261,9 @@ font-style:oblique;
 text-align:center;
 }
 
+#caja_registrado a:visited, #caja_registrado2 a:visited{
+color: blue;
+}
 
 #botonera_horizontal {
 width:800px;
@@ -272,6 +275,11 @@ margin-top:30px;
 margin-bottom:20px;
 margin-left:100px;
 text-align:center;
+}
+
+#botonera_horizontal a {
+text-decoration: none;
+color:#666666;
 }
 
 .estilo_pin {
