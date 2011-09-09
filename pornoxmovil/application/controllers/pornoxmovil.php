@@ -10,9 +10,9 @@ class Pornoxmovil extends CI_Controller {
 	{
 		//echo 'Controlador default';
 		
-		$this->data['page_title'] = 'Pornoxmovil - ';
+		$this->data['page_title'] = 'Pornoxmovil.com';
 		
-		$this->data['content'] = $this->load->view('Pornoxmovil/pornoxmovil', $this->data, TRUE);
+		$this->data['content'] = $this->load->view('pornoxmovil/pornoxmovil', $this->data, TRUE);
         $this->load->view($this->template, $this->data);
 		
 	}
