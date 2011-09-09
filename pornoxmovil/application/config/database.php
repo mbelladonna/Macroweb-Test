@@ -85,7 +85,7 @@ $db['default']['stricton'] = FALSE;
 */
 $db['production']['hostname'] = 'localhost';
 $db['production']['username'] = 'pornoxmovil';
-$db['production']['password'] = 'pornoxmovil_pr0d';
+$db['production']['password'] = 'porno_pr0d';
 $db['production']['database'] = 'pornoxmovil';
 $db['production']['dbdriver'] = 'mysql';
 $db['production']['dbprefix'] = '';
