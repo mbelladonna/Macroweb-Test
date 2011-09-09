@@ -1,4 +1,6 @@
-<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd"><html>
+<?php echo '<?xml version="1.0"?>'; ?> 
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title><? if(!isset($page_title)) : ?>Pornoxmovil.com<? else: ?><?=$page_title?><?php endif;?></title>
@@ -9,7 +11,7 @@
     <body>
 	
 		<div id="logo"><img src="<?php echo base_url();?>assets/img/logo.jpg" alt="logo_movil" width="320" height="141" /></div>
-		<div class="estilo1" id="ultimos">::. Últimos Videos .::</div>
+		<div class="estilo1" id="ultimos">::. Ãšltimos Videos .::</div>
 		
         <div id="contenedor"> 
             <?=$content?>
