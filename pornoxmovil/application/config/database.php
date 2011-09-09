@@ -38,13 +38,36 @@
 | the active record class
 */
 
-$active_group = 'default';
+/* 
+**   Multi-site Mod
+**   Add a case for each of the dev/test/live sites
+*/
+if (isset($_SERVER['HTTP_HOST'])) {
+    switch ($_SERVER['HTTP_HOST']) {
+        case "localhost":
+            define('ACTIVE_GROUP', 'local', TRUE);
+            break;
+        case "www.pornoxmovil.com":        
+        case "pornoxmovil.com":
+            define('ACTIVE_GROUP', 'production', TRUE);
+            break;
+    }
+} else {
+    define('ACTIVE_GROUP', 'production', TRUE);
+}
+
+if (ACTIVE_GROUP == "production") {
+    $active_group = "production";
+}
+if (ACTIVE_GROUP == "local") {
+    $active_group = "default";
+}
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = '';
+$db['default']['username'] = 'root';
 $db['default']['password'] = '';
-$db['default']['database'] = '';
+$db['default']['database'] = 'pornoxmovil';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
@@ -57,6 +80,24 @@ $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 
+/*
+** Configuracion para produccion
+*/
+$db['production']['hostname'] = 'localhost';
+$db['production']['username'] = 'pornoxmovil';
+$db['production']['password'] = 'pornoxmovil_pr0d';
+$db['production']['database'] = 'pornoxmovil';
+$db['production']['dbdriver'] = 'mysql';
+$db['production']['dbprefix'] = '';
+$db['production']['pconnect'] = TRUE;
+$db['production']['db_debug'] = TRUE;
+$db['production']['cache_on'] = FALSE;
+$db['production']['cachedir'] = '';
+$db['production']['char_set'] = 'utf8';
+$db['production']['dbcollat'] = 'utf8_general_ci';
+$db['production']['swap_pre'] = '';
+$db['production']['autoinit'] = TRUE;
+$db['production']['stricton'] = FALSE;
 
 /* End of file database.php */
 /* Location: ./application/config/database.php */

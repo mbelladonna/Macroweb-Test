@@ -14,7 +14,36 @@
 | path to your installation.
 |
 */
-$config['base_url']	= '';
+/* 
+**   Multi-site Mod
+**   Add a case for each of the dev/test/live sites
+*/
+if (isset($_SERVER['HTTP_HOST'])) {
+    switch ($_SERVER['HTTP_HOST']) {
+        case "localhost":
+            define('SITE_URL', 'local', TRUE);
+            break;
+        case "www.pornoxmovil.com":
+        case "pornoxmovil.com":
+            $prodBase = $_SERVER['HTTP_HOST'];
+            define('SITE_URL', 'production', TRUE);
+            break;
+    }
+} else {
+    define('SITE_URL', 'production', TRUE);
+}
+
+if (SITE_URL == "local") {
+    $urlBase = "http://localhost/pornoxmovil/";
+    $indexPage = "index.php";
+} else if (SITE_URL == "production"){
+    $urlBase = "http://$prodBase/";
+    $indexPage = "index.php";
+} else {
+    die ("Error: SITE_URL invalido.-");
+}
+
+$config['base_url'] = $urlBase;
 
 /*
 |--------------------------------------------------------------------------
