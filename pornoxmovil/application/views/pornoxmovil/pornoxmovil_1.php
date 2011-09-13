@@ -1,4 +1,4 @@
-<div class="estilo2" id="titulo">Arancha va a saber lo que es bueno</div>
+ï»¿<div class="estilo2" id="titulo">Arancha va a saber lo que es bueno</div>
 <div id="video">
 	<a href="suscribite.php"><img src="<?php echo base_url();?>assets/img/video1.jpg" alt="video1" width="320" height="240" border="0" /></a>
 </div>
@@ -22,7 +22,7 @@
 	<a href="suscribite.php"><img src="<?php echo base_url();?>assets/img/descarga.png" alt="descargar" width="320" height="42" border="0" /></a>
 </div>
 
-<div class="estilo2" id="titulo4">Gran mamada en baño</div>
+<div class="estilo2" id="titulo4">Gran mamada en baÃ±o</div>
 <div id="video4">
 	<a href="suscribite.php"><img src="<?php echo base_url();?>assets/img/video4.jpg" alt="video2" width="320" height="240" border="0" /></a>
 </div>
@@ -38,7 +38,7 @@
 	<a href="suscribite.php"><img src="<?php echo base_url();?>assets/img/descarga.png" alt="descargar" width="320" height="42" border="0" /></a>
 </div>
 
-<div class="estilo2" id="titulo6">Mamada mañanera</div>
+<div class="estilo2" id="titulo6">Mamada maÃ±anera</div>
 <div id="video6">
 	<a href="suscribite.php"><img src="<?php echo base_url();?>assets/img/video6.jpg" alt="video2" width="320" height="240" border="0" /></a>
 </div>
@@ -52,7 +52,7 @@
 </div>
 <div id="descarga7"><img src="<?php echo base_url();?>assets/img/descarga.png" alt="descargar" /></div>
 
-<div class="estilo2" id="titulo8">Dulces sueños</div>
+<div class="estilo2" id="titulo8">Dulces sueÃ±os</div>
 <div id="video8">
 	<a href="suscribite.php"><img src="<?php echo base_url();?>assets/img/video8.jpg" alt="video2" width="320" height="240" border="0" /></a>
 </div>
@@ -60,7 +60,7 @@
 	<a href="suscribite.php"><img src="<?php echo base_url();?>assets/img/descarga.png" alt="descargar" width="320" height="42" border="0" /></a>
 </div>
 
-<div class="estilo2" id="titulo9">Se tira a su primo pequeño</div>
+<div class="estilo2" id="titulo9">Se tira a su primo pequeÃ±o</div>
 <div id="video9">
 	<a href="suscribite.php"><img src="<?php echo base_url();?>assets/img/video9.jpg" alt="video2" width="320" height="240" border="0" /></a>
 </div>

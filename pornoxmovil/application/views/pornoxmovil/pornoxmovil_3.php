@@ -1,4 +1,4 @@
-<div class="estilo2" id="titulo">Se folla la amiguita</div>
+﻿<div class="estilo2" id="titulo">Se folla la amiguita</div>
 <div id="video">
 	<a href="suscribite.php"><img src="<?php echo base_url();?>assets/img/video21.jpg" alt="video1" width="320" height="240" border="0" /></a>
 </div>
