@@ -19,12 +19,21 @@
 		
 		<div id="franjavideos">
 			<div class="estilo3" id="masvideos">
-				<span class="estilo4">
-					<a href="index.html" class="estilo4">1</a>
-				</span>
-				-<a href="page2.html" class="estilo3">2</a>
-				-<a href="page3.html" class="estilo3">3</a>
-				-<a href="page2.html" class="estilo3">Siguiente&gt;&gt;</a>
+                <? 
+                    for ($i=1; $i<=3; $i++) : 
+                        if ($i == $pagina) :
+                ?>
+				        <span class="estilo4">
+                            <?echo anchor("?page=$i", $i == 1 ? $i : " - $i", array('class' => 'estilo4'))?>
+				        </span>
+                <?      
+                        else :
+                            echo anchor("?page=$i", $i == 1 ? $i : " - $i", array('class' => 'estilo3'));                
+                        endif;
+                    endfor;
+                    $nextpage = $pagina == 3 ? 1 : ++$pagina;
+                    echo anchor("?page=$nextpage", 'Siguiente&gt;&gt;', array('style'=>'margin-left: 5px;'));
+                ?>
 			</div>
 		</div>
 		
