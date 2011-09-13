@@ -1,6 +1,6 @@
 <?php
 
-class Pornoxmovil extends CI_Controller {
+class pornoxmovil extends CI_Controller {
 
 	/* 
     ** Variables de configuracion
@@ -11,7 +11,7 @@ class Pornoxmovil extends CI_Controller {
     var $gateway_url = '';
 	var $auth_subsc_url='';
     var $success_url = 'pornoxmovil/subscription_ok';
-	var $error_url = 'pornoxmovil/subscription_Error';
+	var $error_url = 'pornoxmovil/subscription_error';
     var $notify_url = 'pornoxmovil/payment_notify';
 	var $gateway_key='AmBnZRF2QWf';
     
@@ -22,6 +22,10 @@ class Pornoxmovil extends CI_Controller {
     var $pwd = 'sgB71SDf20';
     var $app = 'PUSH-ECO';
     var $sNumber = '';
+	
+	//-------
+	var $pag =1;
+	//-------
 	
 	function __construct() {
         parent::__construct();
@@ -45,7 +49,9 @@ class Pornoxmovil extends CI_Controller {
 	{
 		$pagina = $this->input->get('page');
         $pagina = $this->_validPage($pagina) ? $pagina : 1;
-		
+		//-------
+		$this->pag = $pagina;
+		//-------
         $this->data['pagina'] = $pagina;
 		$this->data['page_title'] = 'Pornoxmovil.com';
 		$this->data['content'] = $this->load->view("pornoxmovil/pornoxmovil_".$pagina, $this->data, TRUE);
@@ -102,7 +108,7 @@ class Pornoxmovil extends CI_Controller {
                 //error
             }
 
-        }
+        
         $this->data['content'] = $this->load->view('pornoxmovil/subscription_error', $this->data, TRUE);
         $this->load->view($this->template, $this->data);        
     }
@@ -122,8 +128,20 @@ class Pornoxmovil extends CI_Controller {
 	}
 	*/
 	
+	public function ver_video($nrovideo){
+		
+		
+		//-----------------
+		$this->data['pagina'] = $this->pag;
+		//---------------	
+		
+		$this->data['nro_video']= $nrovideo;
+		$this->data['content'] = $this->load->view('pornoxmovil/vervideo', $this->data, TRUE);
+        $this->load->view($this->template, $this->data);
+	
     
-    
+    }	
+	
 }
 
 ?>
