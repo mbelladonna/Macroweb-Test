@@ -45,6 +45,7 @@ class pornoxmovil extends CI_Controller {
         $this->data['pagina'] = $pagina;
         $this->data['video_url'] = base_url().'index.php/pornoxmovil/ver_video/';
 		$this->data['page_title'] = 'Pornoxmovil.com';
+        $this->data['sub_title'] = 'Últimos Videos';
 		$this->data['content'] = $this->load->view("pornoxmovil/pornoxmovil_".$pagina, $this->data, TRUE);
         $this->data['paginador'] = $this->load->view("pornoxmovil/paginador", $this->data, TRUE);
         $this->load->view($this->template, $this->data);
@@ -108,12 +109,49 @@ class pornoxmovil extends CI_Controller {
 	*/
 	
 	public function ver_video($nrovideo) {
+        if (!$this->session->userdata('logged_in')) {
+            $this->session->set_userdata('selected_video', $nrovideo);
+            redirect("/pornoxmovil/login");
+        }
+
+        if (!isset($nrovideo)) {
+            if (!$this->session->userdata('selected_video')) {
+                redirect("/pornoxmovil"); 
+            } else {
+                $nrovideo = $this->session->userdata('selected_video');
+                $this->session->unset_userdata('selected_video');
+            }
+        }
+        
 		$this->data['nro_video']= $nrovideo;
-        $this->data['page_title'] = 'Pornoxmovil.com - Ver video';
+        $this->data['page_title'] = 'Pornoxmovil.com - Ver Video';
+        $this->data['sub_title'] = 'Ver Video';
 		$this->data['content'] = $this->load->view('pornoxmovil/vervideo', $this->data, TRUE);
         $this->data['paginador'] = '';
         $this->load->view($this->template, $this->data);
     }	
+
+    public function login() {
+        if ($this->input->post('data')) {
+            $data = $this->input->post('data');
+            $selected_video = $this->session->userdata('selected_video');
+            if ($this->simplelogin->login($data['username'], $data['password'])) {
+                redirect("/pornoxmovil/ver_video/$selected_video");
+            } else {
+                $this->data['error'] = "Nombre de usuario y/o password inválidos";
+            }
+        }
+        $this->data['page_title'] = 'Pornoxmovil.com - Login';
+        $this->data['sub_title'] = 'Login';
+		$this->data['content'] = $this->load->view("pornoxmovil/login", $this->data, TRUE);
+        $this->data['paginador'] = '';
+        $this->load->view($this->template, $this->data);
+    }
+
+    public function logout() {
+        $this->simplelogin->logout();
+        redirect("/pornoxmovil");
+    }
 	
 }
 

@@ -9,9 +9,19 @@
 		<meta http-equiv="Cache-Control" content="max-age=86400"/>
     </head>
     <body>
-	
-		<div id="logo"><img src="<?php echo base_url();?>assets/img/logo.jpg" alt="logo_movil" width="320" height="141" /></div>
-		<div class="estilo1" id="ultimos">::. Últimos Videos .::</div>
+        <div id="logo">
+            <? echo anchor(base_url(), img(array('src'=>base_url().'assets/img/logo.jpg','width'=>'320','height'=>'141'))); ?>
+        </div>
+        
+        <div id="user_toolbar">
+        <? if ($this->session->userdata('logged_in')) : ?>
+            <? echo anchor('pornoxmovil/logout', 'Logout'); ?>
+        <? else : ?>
+            <? echo anchor('pornoxmovil/register', 'Regístrate'); ?> | <? echo anchor('pornoxmovil/login', 'Login'); ?>
+        <? endif; ?>
+        </div>
+
+		<div class="estilo1" id="ultimos">::. <?=$sub_title?> .::</div>
 		
         <div id="contenedor"> 
             <?=$content?>

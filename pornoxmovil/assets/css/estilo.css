@@ -337,21 +337,6 @@ margin:auto;
 margin-bottom:10px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .estilo1{
 color:#cc7645;
 font-family:Verdana, Arial, Helvetica, sans-serif;
@@ -391,4 +376,33 @@ text-decoration:none;
 color:#666666;
 font-family:Verdana, Arial, Helvetica, sans-serif;
 font-size:11px;
+}
+
+div.error {
+color:red;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:11px;
+text-decoration:none;
+margin-bottom: 10px;
+}
+
+div#user_toolbar{
+border-left: medium none;
+border-right: medium none;
+border-style: solid none;
+border-width: 1px medium;
+margin-left: auto;
+margin-right: auto;
+margin-top: 10px;
+text-align: right;
+width: 320px;
+padding: 2px;
+color:#666666;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:13px;
+}
+
+div#user_toolbar a, div#user_toolbar a:visited {
+text-decoration: none;
+color:#666666;
 }

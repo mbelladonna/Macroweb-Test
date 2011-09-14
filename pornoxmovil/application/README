@@ -1,0 +1,11 @@
+PornoXmovil
+
+Descripcion:
+    Sistema de videos pago para prueba de operator billing api de eg telecom.
+
+Esquema DB:
+    /config/DB/schema.sql
+
+Instrucciones para deploy:
+    Crear base de datos 'pornoxmovil' vacia. Atencion: hacer DROP y CREATE si ya tuviese una DB 'pornoxmovil', caso contrario los cambios no se aplicaran a las tablas que ya existiesen.
+    Importar esquema de DB.
