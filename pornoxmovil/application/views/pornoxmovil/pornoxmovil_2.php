@@ -1,7 +1,3 @@
-﻿<?php
-	$video_url = base_url().'index.php/pornoxmovil/ver_video/';
-?>
-
 <div class="estilo2" id="titulo">La chica del tanga rosa</div>
 <div id="video">
 	<a href="<?php echo $video_url;?>1090010"><img src="<?php echo base_url();?>assets/img/video11.jpg" alt="video1" width="320" height="240" border="0" /></a>

@@ -1,7 +1,3 @@
-﻿<?php
-	$video_url = base_url().'index.php/pornoxmovil/ver_video/';
-?>
-
 <div class="estilo2" id="titulo">Arancha va a saber lo que es bueno</div>
 <div id="video">
 	<a href="<?php echo $video_url;?>1325043"><img src="<?php echo base_url();?>assets/img/video1.jpg" alt="video1" width="320" height="240" border="0" /></a>

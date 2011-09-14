@@ -1,8 +1,4 @@
-﻿<?php
-	$video_url = base_url().'index.php/pornoxmovil/ver_video/';
-?>
-
-<div class="estilo2" id="titulo">Se folla la amiguita</div>
+﻿<div class="estilo2" id="titulo">Se folla la amiguita</div>
 <div id="video">
 	<a href="<?php echo $video_url;?>754069"><img src="<?php echo base_url();?>assets/img/video21.jpg" alt="video1" width="320" height="240" border="0" /></a>
 </div>
