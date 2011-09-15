@@ -1,4 +1,11 @@
-<? echo form_open(current_url(), array('method' => 'post', 'id'=>'register')); ?>
+<script type="text/javascript">
+   $(document).ready(function(){
+        $("#form_register").validate();
+        $("#textfield_usuario").rules("add", reglas_telefono);
+        $("#textfield_password").rules("add", reglas_password);
+   });
+</script>
+<? echo form_open(current_url(), array('method' => 'post', 'id'=>'form_register')); ?>
     <?                      
         if (isset($error)) :
     ?>
@@ -18,7 +25,7 @@
                         <td width="63" class="estilo3">Nombre de usuario:</td>
                         <td width="217">
                             <label>
-                                <? echo form_input(array('name'=>'data[username]', 'class'=>'estilo3', 'id'=>'textfield')); ?>
+                                <? echo form_input(array('name'=>'data[username]', 'class'=>'estilo3', 'id'=>'textfield_usuario')); ?>
                             </label>
                         </td>
                     </tr>
@@ -29,7 +36,7 @@
                     <tr>
                         <td class="estilo3">Contraseña:</td>
                         <td>
-                            <? echo form_password(array('name'=>'data[password]', 'class'=>'estilo3', 'id'=>'textfield')); ?>
+                            <? echo form_password(array('name'=>'data[password]', 'class'=>'estilo3', 'id'=>'textfield_password')); ?>
                         </td>
                     </tr>
                     <tr>

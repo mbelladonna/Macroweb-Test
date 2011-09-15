@@ -1,4 +1,10 @@
-<? echo form_open(current_url(), array('method' => 'post', 'id'=>'register')); ?>
+<script type="text/javascript">
+   $(document).ready(function(){
+        $("#form_subscription").validate();
+        $("#textfield_telefono").rules("add", reglas_telefono);
+       });
+</script>
+<? echo form_open(current_url(), array('method' => 'post', 'id'=>'form_subscription')); ?>
     <?                      
         if (isset($error)) :
     ?>
@@ -18,7 +24,7 @@
                         <td width="63" class="estilo3">Teléfono Movil:</td>
                         <td width="217">
                             <label>
-                                <? echo form_input(array('name'=>'data[movil]', 'class'=>'estilo3', 'id'=>'textfield')); ?>
+                                <? echo form_input(array('name'=>'data[movil]', 'class'=>'estilo3', 'id'=>'textfield_telefono')); ?>
                             </label>
                         </td>
                     </tr>

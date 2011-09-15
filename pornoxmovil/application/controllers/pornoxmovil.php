@@ -80,11 +80,11 @@ class pornoxmovil extends MY_Controller {
             $params['user'] = $data['movil'];
 				
 		    // Envio request a API
-		    $response = $this->curl->_simple_call('get', $this->auth_sub_url, $params);
+		   //$response = $this->curl->_simple_call('get', $this->auth_sub_url, $params);
             
             // Quitar comentarios para forzar rstas del gateway para pruebas
             // Response ok
-		    // $response = '{"id":0,"error":null,"result":{"success":true,"action":"redirect","url":"http:\/\/compra.pagos.movistar.es\/PurchaseApp\/MMACustomerArrived.do;jsessionid=SbVmTwzFpY7QH4f66KxZGzMyS8Rdpp148kpL8kpJhBP4qTY8S6BB!-1951730233!1311781701884?wispSessionID=193978068417","transaction_id":"2e12aa7d534d21beabf4aa3bb45048334e30334559bbd544230852"}}';
+		     $response = '{"id":0,"error":null,"result":{"success":true,"action":"redirect","url":"http:\/\/compra.pagos.movistar.es\/PurchaseApp\/MMACustomerArrived.do;jsessionid=SbVmTwzFpY7QH4f66KxZGzMyS8Rdpp148kpL8kpJhBP4qTY8S6BB!-1951730233!1311781701884?wispSessionID=193978068417","transaction_id":"2e12aa7d534d21beabf4aa3bb45048334e30334559bbd544230852"}}';
             // Response error
             // $response = '{"success":false,"error":{"code":1008,"reason":"method-not-supported-by-carrier","http":"bad-request","url":null,"description":null},"id":0}';
             $this->printPreDebug('Rsta de gateway', $response);
@@ -121,11 +121,11 @@ class pornoxmovil extends MY_Controller {
 			);
 			
             // Envio request a API
-			$response = $this->curl->_simple_call('get', $this->payment_check_url, $params);
+			//$response = $this->curl->_simple_call('get', $this->payment_check_url, $params);
             
             // Quitar comentarios para forzar rstas del gateway para pruebas
             // Response ok
-            // $response = '{ "id":0, "error":null, "result": { "carrier":"movistar-es" , "amount":15, "currency": 1, "user": 100,"userdata":"userdata","date":"14-09-2011", "transaction_id":1111, "subscription" : { "id":12,"start_date":"01-09-2011", "expires_date": "25-09-2011", "period": "weekly"}, "completed": 1 }';
+             $response = '{ "id":0, "error":null, "result": { "carrier":"movistar-es" , "amount":15, "currency": 1, "user": 100,"userdata":"userdata","date":"14-09-2011", "transaction_id":"2e12aa7d534d21beabf4aa3bb45048334e30334559bbd544230852", "subscription" : { "id":12,"start_date":"01-09-2011", "expires_date": "25-09-2011", "period": "weekly"}, "completed": 1 } }';
             // Response error
             // $response = '{"success":false,"error":{"code":1008,"reason":"method-not-supported-by-carrier","http":"bad-request","url":null,"description":null},"id":0}';
             $this->printPreDebug('Rsta de gateway', $response);

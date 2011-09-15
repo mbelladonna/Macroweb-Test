@@ -7,6 +7,10 @@
 		<link href="<?php echo base_url();?>assets/css/estilo.css" rel="stylesheet" type="text/css" />
 		<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
 		<meta http-equiv="Cache-Control" content="max-age=86400"/>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery-1.5.1.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/validator/jquery.validate.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/validator/custom-rules.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/validator/localization/messages_es.js"></script>
     </head>
     <body>
         <div id="logo">
