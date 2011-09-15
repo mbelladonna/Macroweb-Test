@@ -1,5 +1,6 @@
 <?php
 
+
 class pornoxmovil extends CI_Controller {
 
 	/* 
@@ -10,6 +11,7 @@ class pornoxmovil extends CI_Controller {
 	// Parametros para comunicacion con gateway-pupolis
     var $gateway_url = '';
 	var $auth_subsc_url='';
+	var $payment_check_url='';
     var $success_url = 'pornoxmovil/subscription_ok';
 	var $error_url = 'pornoxmovil/subscription_error';
     var $notify_url = 'pornoxmovil/payment_notify';
@@ -31,7 +33,10 @@ class pornoxmovil extends CI_Controller {
         } else {
             die("Error. SITE_URL invalido.");
         }
-		$this->auth_subsc_url = "{$this->gateway_url}/obapi/authPaymentSubscription?{$this->gateway_key}";
+		$this->auth_subsc_url = "{$this->gateway_url}/obapi/authPaymentSubscription?gatewayKey={$this->gateway_key}";
+		$this->payment_check_url = "{$this->gateway_url}/obapi/paymentCheck?gatewayKey={$this->gateway_key}";
+		
+		$this->load->model(array('pornoxmovil_model'));
     }
 
     private function _validPage($pagina) {
@@ -75,7 +80,9 @@ class pornoxmovil extends CI_Controller {
 		// Quitar comentarios para forzar rstas del gateway para pruebas
 		$response = '{"success":true,"action":"redirect","url":"pornoxmovil/subscription_ok","transaction_id":"2e12aa7d534d5555abf4aa3bb45048334e30334559bbd544230850"}'; 
 		
-        // Salvar en la base de datos            
+        // Salvar en la base de datos
+
+		
         if ($response != FALSE) {
             $response = json_decode($response);                
             if (($response->success ==true) &&($response->action == 'redirect')) {
@@ -152,6 +159,74 @@ class pornoxmovil extends CI_Controller {
         $this->simplelogin->logout();
         redirect("/pornoxmovil");
     }
+	
+	
+	// para probar la funcion pasar transaction_id x parametro y previamente crear en la DB un registro donde el bit usado sea 0
+	public function register($transaction_id='') {
+	
+
+		if ($transaction_id!='') {
+			
+			if ($this->pornoxmovil_model->transactionIdValid($transaction_id)){
+								
+				$params = array(
+						"transaction_id" => $transaction_id
+				);
+				
+				//$response_id = $this->curl->_simple_call('get', $this->payment_check_url, $params);
+                 
+				/* estructura respuesta
+					result: carrier, amount, currency, user, userdata,date,transaction_id, 
+							subscription : idstart_date,expires_date,period
+							completed,reason
+				*/
+				$response_id = '{ "result": { "carrier":"movistar-es" , "amount":15, "currency": 1, "user": 100,"userdata":"userdata","date":"14-09-2011", "transaction_id":1111, "subscription" : { "id":12,"start_date":"01-09-2011", "expires_date": "25-09-2011", "period": "weekly"}, "completed":true, "reason":null}'; 
+						
+				//ver bien si el nro user es el numero de telefono si no se debe guardar en la base de datos
+				
+				/*if ($response_id != FALSE) {
+					$response_id = json_decode($response_id);                
+					if ($response_id->   ) {
+						
+						redirect(  ); 
+					 
+					} else {
+						//error
+					}
+				} else {
+					//error
+				}*/
+				
+				if ($this->input->post('data')) {
+					$data = $this->input->post('data');
+					if ($this->simplelogin->create($data['username'], $data['password'], true)){
+						// usuario creado y logeado correctamente
+						redirect("pornoxmovil/index");
+					}
+					else {
+							// error al registrar usuario
+						 $this->data['error'] = "Nombre de usuario y/o password inválidos";
+					}
+				}
+				
+				$this->data['page_title'] = 'Pornoxmovil.com - Register';
+				$this->data['sub_title'] = 'Registrate';
+				$this->data['content'] = $this->load->view("pornoxmovil/register", $this->data, TRUE);
+				$this->data['paginador'] = '';
+				$this->load->view($this->template, $this->data);
+					
+				
+				}
+				else {
+					 $this->data['error'] = "Transaction id invalido o usado.";
+				}
+				
+			}
+		else {
+			echo "Error - Se necesita ingresar un transactionId ( localhost/pornoxmovil/index.php/pornoxmovil/register/1111)";
+		}
+		
+	}
 	
 }
 
