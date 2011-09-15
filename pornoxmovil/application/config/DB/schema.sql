@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.3.9
+-- version 3.3.10deb1
 -- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tiempo de generación: 15-09-2011 a las 04:03:14
--- Versión del servidor: 5.5.8
--- Versión de PHP: 5.3.5
+-- Host: localhost
+-- Generation Time: Sep 15, 2011 at 12:56 PM
+-- Server version: 5.1.54
+-- PHP Version: 5.3.5-1ubuntu7.2
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -16,24 +16,25 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de datos: `pornoxmovil`
+-- Database: `pornoxmovil`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `requests_transaction_id`
+-- Table structure for table `requests_transaction_id`
 --
 
 CREATE TABLE IF NOT EXISTS `requests_transaction_id` (
-  `transaction_id` int(11) NOT NULL,
-  `usado` tinyint(1) NOT NULL
+  `transaction_id` varchar(256) NOT NULL,
+  `usado` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`transaction_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
@@ -42,4 +43,4 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(64) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1;

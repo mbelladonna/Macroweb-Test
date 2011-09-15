@@ -17,7 +17,7 @@
         <? if ($this->session->userdata('logged_in')) : ?>
             <? echo anchor('pornoxmovil/logout', 'Logout'); ?>
         <? else : ?>
-            <? echo anchor('pornoxmovil/register', 'Regístrate'); ?> | <? echo anchor('pornoxmovil/login', 'Login'); ?>
+            <? echo anchor('pornoxmovil/authorizeSubscription', 'Regístrate'); ?> | <? echo anchor('pornoxmovil/login', 'Login'); ?>
         <? endif; ?>
         </div>
 
