@@ -130,6 +130,13 @@ font-family:Verdana, Arial, Helvetica, sans-serif;
 font-size:11px;
 }
 
+label.error {
+color:red;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:11px;
+display:block;
+}
+
 div.error {
 color:red;
 font-family:Verdana, Arial, Helvetica, sans-serif;

@@ -27,6 +27,16 @@
                                 <? echo form_input(array('name'=>'data[movil]', 'class'=>'estilo3', 'id'=>'textfield_telefono')); ?>
                             </label>
                         </td>
+                     
+                    </tr>
+                    <tr>
+                        <td width="63" class="estilo3">Operador:</td>
+                        <td width="217">
+                            <label>
+                                <? echo form_dropdown('data[operador]',array('movistar-es'=>'Movistar', 'vodafone-es'=>'Vodafone', 'orange-es'=>'Orange'),'movistar-es'); ?>
+                            </label>
+                        </td>
+                     
                     </tr>
                     <tr>
                         <td>&nbsp;</td>
@@ -34,7 +44,9 @@
                             <label>
                                 <? echo form_submit(array('name'=>'submit', 'class'=>'estilo4', 'value'=>'Aceptar')); ?>
                             </label>
+                            
                         </td>
+                        
                     </tr>
                 </table>
             </td>
