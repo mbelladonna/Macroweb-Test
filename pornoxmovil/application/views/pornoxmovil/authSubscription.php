@@ -33,7 +33,7 @@
                         <td width="63" class="estilo3">Operador:</td>
                         <td width="217">
                             <label>
-                                <? echo form_dropdown('data[operador]',array('movistar-es'=>'Movistar', 'vodafone-es'=>'Vodafone', 'orange-es'=>'Orange'),'movistar-es'); ?>
+                                <? echo form_dropdown('data[operador]',$lista_operadores,$operador_default); ?>
                             </label>
                         </td>
                      

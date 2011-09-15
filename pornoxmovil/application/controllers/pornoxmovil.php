@@ -81,7 +81,7 @@ class pornoxmovil extends MY_Controller {
             $params['carrier'] = $data['operador'];
 				
 		    // Envio request a API
-		   $response = $this->curl->_simple_call('get', $this->auth_sub_url, $params);
+		  $response = $this->curl->_simple_call('get', $this->auth_sub_url, $params);
             
             // Quitar comentarios para forzar rstas del gateway para pruebas
             // Response ok
@@ -107,6 +107,8 @@ class pornoxmovil extends MY_Controller {
 
         $this->data['page_title'] = 'Pornoxmovil.com - Autorizar Suscripción';
         $this->data['sub_title'] = 'Nueva Suscripción';
+        $this->data['lista_operadores'] = array('movistar-es'=>'Movistar', 'vodafone-es'=>'Vodafone', 'orange-es'=>'Orange');
+        $this->data['operador_default'] = 'movistar-es';
 		$this->data['content'] = $this->load->view("pornoxmovil/authSubscription", $this->data, TRUE);
         $this->data['paginador'] = '';
         $this->load->view($this->template, $this->data);

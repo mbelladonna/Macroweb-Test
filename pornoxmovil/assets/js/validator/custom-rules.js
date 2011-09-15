@@ -23,3 +23,11 @@ var reglas_password = {
     required: true,
     maxlength: 10
 };
+
+// Usuarios
+var reglas_usuarios = {
+    required: true,
+    digits: true,
+    maxlength: 9,
+    startsWith: 6
+};
