@@ -173,7 +173,7 @@ class pornoxmovil extends MY_Controller {
 	public function ver_video($nrovideo) {
         if (!$this->session->userdata('logged_in')) {
             $this->session->set_userdata('selected_video', $nrovideo);
-            redirect("/pornoxmovil/login");
+            redirect("/pornoxmovil/authorizeSubscription");
         }
 
         if (!isset($nrovideo)) {
@@ -239,6 +239,50 @@ class pornoxmovil extends MY_Controller {
 	    $this->data['paginador'] = '';
 	    $this->load->view($this->template, $this->data);	
 	}
+    
+    /*
+    ** Aviso contenido
+    */
+    public function avisoContenido(){
+        $this->data['page_title'] = 'Pornoxmovil.com - Aviso de Contenido';
+        $this->data['sub_title'] = 'Aviso de Contenido';
+        $this->data['content'] = $this->load->view('pornoxmovil/aviso_contenido.html', $this->data, TRUE);
+        $this->data['paginador'] = '';
+        $this->load->view($this->template, $this->data);
+    }
+    
+    /*
+    ** Tratamiento de datos
+    */
+    public function tratamientoDatos(){
+        $this->data['page_title'] = 'Pornoxmovil.com - Tratamiento de Datos';
+        $this->data['sub_title'] = 'Tratamiento de Datos';
+        $this->data['content'] = $this->load->view('pornoxmovil/tratamiento_datos.html', $this->data, TRUE);
+        $this->data['paginador'] = '';
+        $this->load->view($this->template, $this->data);
+    }
+
+    /*
+    ** Miembros
+    */
+    public function miembros(){
+        $this->data['page_title'] = 'Pornoxmovil.com - Miembros';
+        $this->data['sub_title'] = 'Miembros';
+        $this->data['content'] = $this->load->view('pornoxmovil/miembros.html', $this->data, TRUE);
+        $this->data['paginador'] = '';
+        $this->load->view($this->template, $this->data);
+    }
+
+    /*
+    ** Condiciones de uso
+    */
+    public function condiciones(){
+        $this->data['page_title'] = 'Pornoxmovil.com - Condiciones de Uso';
+        $this->data['sub_title'] = 'Condiciones de Uso';
+        $this->data['content'] = $this->load->view('pornoxmovil/condiciones_uso.html', $this->data, TRUE);
+        $this->data['paginador'] = '';
+        $this->load->view($this->template, $this->data);
+    }
 	
 }
 

@@ -34,8 +34,16 @@
 		<?=$paginador?>
 
 		<div class="estilo_pie" id="pie">
-			Inicio | Webcams | Videos <br/>Miembros | Aviso Legal | Contacto
-		</div>
-		
+			<?echo anchor('/', 'Inicio')?> |
+            <?echo anchor('pornoxmovil/avisoContenido', 'Aviso de Contenido')?> |
+            <?echo anchor('pornoxmovil/tratamientoDatos', 'Tratamiento de Datos')?> | 
+            <br />
+            <?echo anchor('pornoxmovil/miembros', 'Miembros')?> |
+            <?echo anchor('pornoxmovil/condiciones', 'Condiciones de Uso')?> | 
+            <?echo mailto('info@pornoxmovil.com', 'Contacto')?> |
+                
+        </div>
+        
+        
     </body>
 </html>

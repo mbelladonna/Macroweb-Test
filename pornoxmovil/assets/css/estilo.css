@@ -34,6 +34,11 @@ margin-top:30px;
 border-top:solid 1px;
 }
 
+#pie a {
+text-decoration: none;
+color:#666666;
+}
+
 #franjavideos{
 width:100%;
 height:auto;

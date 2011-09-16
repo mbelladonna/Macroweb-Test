@@ -22,6 +22,10 @@
 </div>
 <div id="franja_moviles">
     <div class="estilo3" id="moviles">
-        El contenido móvil de Pornoxmovil.com es compatible con modelos smartphone, que utilizen SO Android e Iphone. Tu teléfono móvil ha de tener acceso a Internet y poder visualizar videos flash o similares.
+        <strong>Terminos y Condiciones:</strong> Servicio de suscripción ofrecido por Querox S.L. mediante la utilización de la plataforma de EG Telecom, Apdo. 61010 CP 28036 Madrid. Coste máximo semanal, dependiendo de su operador, 5 euros más IVA. <br />
+        Si desea cancelar el servicio debe comunicarse con atención al cliente de su operador de telefonía móvil y solicitar la baja del mismo.<br />
+        <br />
+        <strong>Móviles Compatibles:</strong> El contenido móvil de Pornoxmovil.com es compatible con modelos smartphone, que utilizen SO Android e Iphone. Tu teléfono móvil ha de tener acceso a Internet y poder visualizar videos flash o similares.</div>
+
     </div>
 </div>
