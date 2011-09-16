@@ -77,7 +77,7 @@
                 <div>
                     <strong>Términos y  Condiciones:</strong>
                     <br />
-                    Servicio de suscripción prestado por [Querox S.L] prestado a través de un servicio de tarificación adicional de suscripción ofrecido por EG TELECOM, S.A. C/ Agustín de Foxá 25, 9ª Planta, 28036 Madrid, España. Coste 1,42 euros por SMS recibido IVA incluido. Máximo 25 SMS/mes. Para cancelar el servicio envía BAJA al 795266. Num. Atn. Clte. 902599231. Soporte sms@egtelecom.es Al introducir el PIN enviado a tu Terminal aceptas los Términos Legales del servicio. El presente Sitio Web, el servicio de descargas y los contenidos ofrecidos en el mismo son responsabilidad exclusiva de [Querox S.L] Servicio reservado a mayores de 18 años.
+                    Servicio de suscripción prestado por Querox S.L prestado a través de un servicio de tarificación adicional de suscripción ofrecido por EG TELECOM, S.A. C/ Agustín de Foxá 25, 9ª Planta, 28036 Madrid, España. Coste 1,42 euros por SMS recibido IVA incluido. Máximo 25 SMS/mes. Para cancelar el servicio envía BAJA al 795266. Num. Atn. Clte. 902599231. Soporte sms@egtelecom.es Al introducir el PIN enviado a tu Terminal aceptas los Términos Legales del servicio. El presente Sitio Web, el servicio de descargas y los contenidos ofrecidos en el mismo son responsabilidad exclusiva de Querox S.L Servicio reservado a mayores de 18 años.
                 </div>
             </td>
         </tr>
