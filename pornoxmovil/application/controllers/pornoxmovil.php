@@ -81,7 +81,7 @@ class pornoxmovil extends MY_Controller {
             $params['carrier'] = $data['operador'];
 				
 		    // Envio request a API
-		  $response = $this->curl->_simple_call('get', $this->auth_sub_url, $params);
+            $response = $this->curl->_simple_call('get', $this->auth_sub_url, $params);
             
             // Quitar comentarios para forzar rstas del gateway para pruebas
             // Response ok

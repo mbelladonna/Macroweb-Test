@@ -25,7 +25,7 @@
                         <td width="63" class="estilo3">Nombre de usuario:</td>
                         <td width="217">
                             <label>
-                                <? echo form_input(array('name'=>'data[username]', 'class'=>'estilo3', 'id'=>'textfield_usuario', 'maxlength'   => '8',)); ?>
+                                <? echo form_input(array('name'=>'data[username]', 'class'=>'estilo3', 'id'=>'textfield_usuario', 'maxlength'   => '8')); ?>
                             </label>
                         </td>
                     </tr>
@@ -36,7 +36,7 @@
                     <tr>
                         <td class="estilo3">Contraseña:</td>
                         <td>
-                            <? echo form_password(array('name'=>'data[password]', 'class'=>'estilo3', 'id'=>'textfield_password', 'maxlength'   => '10',)); ?>
+                            <? echo form_password(array('name'=>'data[password]', 'class'=>'estilo3', 'id'=>'textfield_password', 'maxlength'   => '10')); ?>
                         </td>
                     </tr>
                     <tr>

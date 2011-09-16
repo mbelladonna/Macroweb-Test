@@ -24,10 +24,14 @@
                         <td width="63" class="estilo3">Teléfono Movil:</td>
                         <td width="217">
                             <label>
-                                <? echo form_input(array('name'=>'data[movil]', 'class'=>'estilo3', 'id'=>'textfield_telefono', 'maxlength'=>'9',)); ?>
+                                <? echo form_input(array('name'=>'data[movil]', 'class'=>'estilo3', 'id'=>'textfield_telefono', 'maxlength'=>'9')); ?>
                             </label>
                         </td>
                      
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
                     </tr>
                     <tr>
                         <td width="63" class="estilo3">Operador:</td>
