@@ -1,7 +1,7 @@
 <script type="text/javascript">
    $(document).ready(function(){
         $("#form_register").validate();
-        $("#textfield_usuario").rules("add", reglas_telefono);
+        $("#textfield_usuario").rules("add", reglas_usuario);
         $("#textfield_password").rules("add", reglas_password);
    });
 </script>
@@ -25,7 +25,7 @@
                         <td width="63" class="estilo3">Nombre de usuario:</td>
                         <td width="217">
                             <label>
-                                <? echo form_input(array('name'=>'data[username]', 'class'=>'estilo3', 'id'=>'textfield_usuario')); ?>
+                                <? echo form_input(array('name'=>'data[username]', 'class'=>'estilo3', 'id'=>'textfield_usuario', 'maxlength'   => '8',)); ?>
                             </label>
                         </td>
                     </tr>
@@ -36,7 +36,7 @@
                     <tr>
                         <td class="estilo3">Contraseña:</td>
                         <td>
-                            <? echo form_password(array('name'=>'data[password]', 'class'=>'estilo3', 'id'=>'textfield_password')); ?>
+                            <? echo form_password(array('name'=>'data[password]', 'class'=>'estilo3', 'id'=>'textfield_password', 'maxlength'   => '10',)); ?>
                         </td>
                     </tr>
                     <tr>

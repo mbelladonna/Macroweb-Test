@@ -24,10 +24,8 @@ var reglas_password = {
     maxlength: 10
 };
 
-// Usuarios
-var reglas_usuarios = {
+// Usuario
+var reglas_usuario = {
     required: true,
-    digits: true,
-    maxlength: 9,
-    startsWith: 6
+    maxlength: 8,    
 };
