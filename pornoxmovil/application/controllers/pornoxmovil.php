@@ -9,8 +9,10 @@ class pornoxmovil extends MY_Controller {
 	
 	// Parametros para comunicacion con gateway-pupolis
     var $gateway_url = '';
-	var $auth_sub_url='';
-	var $payment_check_url='';
+	var $auth_sub_url = '';
+	var $payment_check_url = '';
+    var $payment_inquiry_url = '';
+    var $inquiry_retries = 10;
     var $notify_url = '';
 	var $gateway_key='AmBnZRF2QWf';
 
@@ -33,6 +35,7 @@ class pornoxmovil extends MY_Controller {
         }
 		$this->auth_sub_url = "{$this->gateway_url}obapi/authPaymentSubscription";
 		$this->payment_check_url = "{$this->gateway_url}obapi/paymentCheck";
+        $this->payment_inquiry_url = "{$this->gateway_url}obapi/paymentInquiry";
         $this->success_url = base_url().$this->success_url;
         $this->error_url = base_url().$this->error_url;
         $this->notify_url = "{$this->gateway_url}obapi/notificationServer";
@@ -84,8 +87,10 @@ class pornoxmovil extends MY_Controller {
             $response = $this->curl->_simple_call('get', $this->auth_sub_url, $params);
             
             // Quitar comentarios para forzar rstas del gateway para pruebas
-            // Response ok
+            // Response Redirect ok
 		    // $response = '{"id":0,"error":null,"result":{"success":true,"action":"redirect","url":"http:\/\/compra.pagos.movistar.es\/PurchaseApp\/MMACustomerArrived.do;jsessionid=SbVmTwzFpY7QH4f66KxZGzMyS8Rdpp148kpL8kpJhBP4qTY8S6BB!-1951730233!1311781701884?wispSessionID=193978068417","transaction_id":"2e12aa7d534d21beabf4aa3bb45048334e30334559bbd544230852"}}';
+            // Response Inquiry ok
+  		    // $response = '{"id":0,"error":null,"result":{"success":true,"action":"inquiry","transaction_id":"24d1df5b5688a96d55426bb2b6a6d2124e73979075ec5678354252"}}';
             // Response error
             // $response = '{"success":false,"error":{"code":1008,"reason":"method-not-supported-by-carrier","http":"bad-request","url":null,"description":null},"id":0}';
             $this->printPreDebug('Rsta de gateway', $response);
@@ -93,12 +98,32 @@ class pornoxmovil extends MY_Controller {
             if ($response != FALSE) {
                 $response = json_decode($response);
                 $this->printPreDebug('Rsta de gateway parseada a objeto', $response);
-                if ( ($response->error == NULL) && ($response->result->action == 'redirect') ) {
-                    $this->pornoxmovil_model->saveTransactionsIdRequest(array('transaction_id' => $response->result->transaction_id));
-				    redirect($response->result->url); 
-                    
-                } else {
+                $retries = 0;
+                $transaction_id = 0;
+                while ( $response->error == NULL && $retries < $this->inquiry_retries) {
+                    if ($response->result->action == 'redirect') { 
+                        $this->pornoxmovil_model->saveTransactionsIdRequest(array('transaction_id' => $transaction_id == 0 ? $response->result->transaction_id : $transaction_id));
+				        redirect($response->result->url); 
+                    } else {
+                        $inquiry_params = array(
+                            "gatewayKey" => $this->gateway_key,
+                            'transaction_id' => $transaction_id == 0 ? $response->result->transaction_id : $transaction_id
+                        );
+
+                        // Envio request a API
+                        $response = $this->curl->_simple_call('get', $this->payment_inquiry_url, $inquiry_params);
+                        
+                        // Quitar comentarios para forzar rstas del gateway para pruebas
+                        // Response Inquiry ok
+            		    // $response = '{"id":0,"error":null,"result":{"success":true,"action":"inquiry","transaction_id":"24d1df5b5688a96d55426bb2b6a6d2124e73979075ec5678354252"}}';
+                        $response = json_decode($response);
+                        $retries++;
+                    }
+                }
+                if ($response->error != NULL) {
                     $this->data['error'] = 'Error al intentar autorizar suscripción.';
+                } else if ($retries == $this->inquiry_retries) {
+                    $this->data['error'] = 'Se agotó el número de reintentos de autorizar suscripción.';
                 }
             } else {
                 $this->data['error'] = "Error en comunicación con gateway : ({$this->curl->error_code} - {$this->curl->error_string})";
