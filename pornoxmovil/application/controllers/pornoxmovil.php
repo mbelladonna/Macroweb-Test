@@ -100,7 +100,7 @@ class pornoxmovil extends MY_Controller {
                 $this->printPreDebug('Rsta de gateway parseada a objeto', $response);
                 $retries = 0;
                 $transaction_id = 0;
-                while ( $response->error == NULL && $retries < $this->inquiry_retries) {
+                while ( $response != FALSE && $response->error == NULL && $retries < $this->inquiry_retries) {
                     if ($response->result->action == 'redirect') { 
                         $this->pornoxmovil_model->saveTransactionsIdRequest(array('transaction_id' => $transaction_id == 0 ? $response->result->transaction_id : $transaction_id));
 				        redirect($response->result->url); 
@@ -120,7 +120,9 @@ class pornoxmovil extends MY_Controller {
                         $retries++;
                     }
                 }
-                if ($response->error != NULL) {
+                if ($response == FALSE) {
+                    $this->data['error'] = "Error en comunicación con gateway : ({$this->curl->error_code} - {$this->curl->error_string})";
+                } elseif ($response->error != NULL) {
                     $this->data['error'] = 'Error al intentar autorizar suscripción.';
                 } else if ($retries == $this->inquiry_retries) {
                     $this->data['error'] = 'Se agotó el número de reintentos de autorizar suscripción.';
