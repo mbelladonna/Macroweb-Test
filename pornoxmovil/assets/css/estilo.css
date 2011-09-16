@@ -158,6 +158,10 @@ text-align:justify;
 
 }
 
+td.estilo_terminos label.error {
+display:inline;
+}
+
 label.error {
 color:red;
 font-family:Verdana, Arial, Helvetica, sans-serif;
