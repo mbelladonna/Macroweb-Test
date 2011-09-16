@@ -105,9 +105,12 @@ class pornoxmovil extends MY_Controller {
                         $this->pornoxmovil_model->saveTransactionsIdRequest(array('transaction_id' => $transaction_id == 0 ? $response->result->transaction_id : $transaction_id));
 				        redirect($response->result->url); 
                     } else {
+                        if ($transaction_id == 0) {
+                            $transaction_id = $response->result->transaction_id;
+                        }
                         $inquiry_params = array(
                             "gatewayKey" => $this->gateway_key,
-                            'transaction_id' => $transaction_id == 0 ? $response->result->transaction_id : $transaction_id
+                            'transaction_id' => $transaction_id;
                         );
 
                         // Envio request a API
