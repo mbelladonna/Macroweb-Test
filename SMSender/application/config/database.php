@@ -47,8 +47,8 @@ if (isset($_SERVER['HTTP_HOST'])) {
         case "localhost":
             define('ACTIVE_GROUP', 'local', TRUE);
             break;
-        case "www.500smsgratis.com":        
-        case "500smsgratis.com":
+        case "www.envia500sms.com":        
+        case "envia500sms.com":
             define('ACTIVE_GROUP', 'production', TRUE);
             break;
     }

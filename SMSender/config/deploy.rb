@@ -1,7 +1,7 @@
 #Required settings
 #Set application to the url of the project
 set :user, "root"
-set :application, "500smsgratis"
+set :application, "envia500sms"
 
 #Set repository is the path to the Git repository to deploy from. Capistrano will ssh into the server,
 #so the user specified below must be able to ssh into the server
@@ -9,15 +9,15 @@ set :repository, "git@github.com:querox/Proyectos-Generales-PHP.git"
 
 #Roles
 #Roles are named sets of servers that you can target Capistrano tasks to execute against.
-role :web, "500smsgratis.com"
-role :app, "500smsgratis.com"
+role :web, "envia500sms.com"
+role :app, "envia500sms.com"
 
 #Optional Settings
 #This allows Capistrano to prompt for passwords
 default_run_options[:pty] = true
 
 #The following lines tell Capistrano where to deploy the project
-set :deploy_to, "/var/www/vhosts/500smsgratis.com"
+set :deploy_to, "/var/www/vhosts/envia500sms.com"
 set :current_path, "#{deploy_to}/httpdocs"
 set :releases_path, "#{deploy_to}/releases/"
 set :shared_path, "#{deploy_to}/shared/"
