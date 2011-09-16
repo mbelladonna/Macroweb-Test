@@ -1,4 +1,4 @@
-<div id="franjavideos">
+﻿<div id="franjavideos">
     <div class="estilo3" id="masvideos">
         <? 
             for ($i=1; $i<=3; $i++) : 
@@ -16,8 +16,12 @@
             echo anchor("?page=$nextpage", 'Siguiente&gt;&gt;', array('style'=>'margin-left: 5px;'));
         ?>
     </div>
-</div>
-		
+</div>		
 <div class="estilo3" id="volverarriba">
 	<a href="#logo" class="estilo_volver_arriba">Volver arriba</a>
+</div>
+<div id="franja_moviles">
+    <div class="estilo3" id="moviles">
+        El contenido móvil de Pornoxmovil.com es compatible con modelos smartphone, que utilizen SO Android e Iphone. Tu teléfono móvil ha de tener acceso a Internet y poder visualizar videos flash o similares.
+    </div>
 </div>

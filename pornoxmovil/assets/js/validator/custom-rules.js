@@ -29,3 +29,11 @@ var reglas_usuario = {
     required: true,
     maxlength: 8,    
 };
+
+// Terminos y condiciones
+var reglas_terminos = {
+    required: true,
+    messages: {
+        required: "Debe aceptar los Terminos y Condiciones."
+    }
+};

@@ -1,7 +1,7 @@
 <script type="text/javascript">
    $(document).ready(function(){
         $("#login").validate();
-        $("#textfield_usuario").rules("add", reglas_telefono);
+        $("#textfield_usuario").rules("add", reglas_usuario);
         $("#textfield_password").rules("add", reglas_password);
    });
 </script>

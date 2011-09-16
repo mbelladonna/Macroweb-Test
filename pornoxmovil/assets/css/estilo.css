@@ -85,6 +85,18 @@ margin:auto;
 margin-bottom:10px;
 }
 
+#franja_moviles{
+width:100%;
+height:auto;
+text-align:center;
+margin-top:10px;
+}
+
+#moviles{
+width:320px;
+height:auto;
+margin:auto;
+}
 
 .estilo1{
 color:#cc7645;
@@ -109,6 +121,7 @@ font-size:11px;
 text-decoration:none;
 }
 
+
 .estilo_volver_arriba{
 color:#996633;
 font-family:Verdana, Arial, Helvetica, sans-serif;
@@ -128,6 +141,16 @@ text-decoration:none;
 color:#666666;
 font-family:Verdana, Arial, Helvetica, sans-serif;
 font-size:11px;
+}
+
+
+.estilo_terminos{
+color:#2e4c69;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:11px;
+text-decoration:none;
+text-align:justify;
+
 }
 
 label.error {
