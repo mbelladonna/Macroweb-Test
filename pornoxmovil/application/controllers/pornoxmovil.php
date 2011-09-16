@@ -110,7 +110,7 @@ class pornoxmovil extends MY_Controller {
                         }
                         $inquiry_params = array(
                             "gatewayKey" => $this->gateway_key,
-                            'transaction_id' => $transaction_id;
+                            'transaction_id' => $transaction_id
                         );
 
                         // Envio request a API
