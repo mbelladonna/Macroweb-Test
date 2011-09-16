@@ -1,4 +1,4 @@
-<script type="text/javascript">
+﻿<script type="text/javascript">
    $(document).ready(function(){
         $("#form_nuevo").validate();
         $("#destino_subno").rules("add", reglas_telefono);
@@ -72,15 +72,12 @@
         
         <div id="acepto">
             <? echo form_checkbox(array('name'=>'checkbox', 'id'=> 'term_check','checked'=> FALSE) ) ?>
-            Al pulsar el bot&#243n acepto los T&#233rminos y Condiciones del Servicio<br />y la Pol&#237tica de Privacidad y Protecci&#243n de Datos
+             Acepto los Términos y Condiciones del servicio de suscripción, ver a pie de página. Coste 1,42 euros por mensaje recibido.
+            
         </div>
 
         <div id="lugar_boton">
             <? echo form_submit(array('name'=>'button', 'type'=>'submit', 'class'=>'boton', 'id'=>'button')); ?>
-        </div>
-
-        <div id="caja_precio">
-            Coste por Alerta recibida 1,42&#8364
         </div>
 
     </form>
@@ -88,8 +85,8 @@
 </div>
 
 <div id="terminos">
-    Condiciones de uso: Terminos y Condiciones: Servicio de suscripci&#243n ofrecido por EG Telecom, Apdo. 61010 CP 28036 Madrid. Coste 1,42 euros por SMS recibido IVA incluido. Movistar: 15 SMS/mes. Otros: 25 SMS/mes. Para cancelar el servicio env&#237a BAJA al 795266. Num. Atn. Clte. 902 052 846, sms@egtelecom.es 
-</div>  
+     Términos y  Condiciones: Servicio de suscripción prestado por [Querox S.L] prestado a través de un servicio de tarificación adicional de suscripción ofrecido por EG TELECOM, S.A. C/ Agustín de Foxá 25, 9ª Planta, 28036 Madrid, España. Coste 1,42 euros por SMS recibido IVA incluido. Máximo 25 SMS/mes. Para cancelar el servicio envía BAJA al 795266. Num. Atn. Clte. 902599231. Soporte sms@egtelecom.es Al introducir el PIN enviado a tu Terminal aceptas los Términos Legales del servicio. El presente Sitio Web, el servicio de descargas y los contenidos ofrecidos en el mismo son responsabilidad exclusiva de [Querox S.L] Servicio reservado a mayores de 18 años.
+</div>    
  
 <div id="caja_ayuda">
     <? echo form_open(current_url(), array('method' => 'post', 'id' => 'form_registrado')); ?>

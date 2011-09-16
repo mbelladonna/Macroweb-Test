@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -16,10 +16,12 @@
                 <?echo anchor('/', 'Inicio')?> |
                 <?echo anchor('smsender/quienesSomos', 'Qui&#233nes Somos')?> |
                 <?echo anchor('smsender/comoFunciona', 'C&#243mo Funciona')?> | 
-                <?echo anchor('smsender/aviso', 'Aviso Legal')?> | 
+                <?echo anchor('smsender/aviso', 'Aviso Legal')?> |
+                <br />
                 <?echo anchor('smsender/condiciones', 'Condiciones de Uso')?> | 
                 <?echo anchor('smsender/ayuda', 'Ayuda')?> |
-                <?echo mailto('info@500smsgratis.com', 'Contactar')?>
+                <?echo mailto('info@500smsgratis.com', 'Contactar')?> |
+                <?echo anchor('smsender/tratamientoDatos', 'Tratamiento de Datos')?> |
             </div>
         </div>
     </body>

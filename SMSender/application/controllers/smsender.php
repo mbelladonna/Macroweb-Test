@@ -435,6 +435,14 @@ class smsender extends MY_Controller {
         $this->data['content'] = $this->load->view('SMSender/uso.html', $this->data, TRUE);
         $this->load->view($this->template, $this->data);
     }
+    
+    /*
+    ** Tratamiento de datos
+    */
+    public function tratamientoDatos(){
+        $this->data['content'] = $this->load->view('SMSender/tratamiento_datos.html', $this->data, TRUE);
+        $this->load->view($this->template, $this->data);
+    }
 
 }
 
