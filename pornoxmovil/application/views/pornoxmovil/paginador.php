@@ -1,4 +1,4 @@
-﻿<div id="franjavideos">
+<div id="franjavideos">
     <div class="estilo3" id="masvideos">
         <? 
             for ($i=1; $i<=3; $i++) : 
