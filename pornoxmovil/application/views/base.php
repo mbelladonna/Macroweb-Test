@@ -40,7 +40,7 @@
             <br />
             <?echo anchor('pornoxmovil/miembros', 'Miembros')?> |
             <?echo anchor('pornoxmovil/condiciones', 'Condiciones de Uso')?> | 
-            <?echo mailto('info@pornoxmovil.com', 'Contacto')?> |
+            <?echo mailto('info@pornoxmovil.com', 'Contacto')?> 
                 
         </div>
         

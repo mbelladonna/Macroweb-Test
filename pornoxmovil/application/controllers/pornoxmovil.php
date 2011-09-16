@@ -266,11 +266,12 @@ class pornoxmovil extends MY_Controller {
     ** Miembros
     */
     public function miembros(){
-        $this->data['page_title'] = 'Pornoxmovil.com - Miembros';
-        $this->data['sub_title'] = 'Miembros';
-        $this->data['content'] = $this->load->view('pornoxmovil/miembros.html', $this->data, TRUE);
-        $this->data['paginador'] = '';
-        $this->load->view($this->template, $this->data);
+        if (!$this->session->userdata('logged_in')) {
+            redirect("/pornoxmovil/login");
+        }
+        else {
+            redirect("pornoxmovil/index");
+        }
     }
 
     /*
