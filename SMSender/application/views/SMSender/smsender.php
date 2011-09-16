@@ -1,4 +1,4 @@
-﻿<script type="text/javascript">
+<script type="text/javascript">
    $(document).ready(function(){
         $("#form_nuevo").validate();
         $("#destino_subno").rules("add", reglas_telefono);
