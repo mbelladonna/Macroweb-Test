@@ -112,11 +112,12 @@ class pornoxmovil extends MY_Controller {
 
                         // Envio request a API
                         $response = $this->curl->_simple_call('get', $this->payment_inquiry_url, $inquiry_params);
-                        
+                        $this->printPreDebug('Rsta de gateway', $response);                        
                         // Quitar comentarios para forzar rstas del gateway para pruebas
                         // Response Inquiry ok
             		    // $response = '{"id":0,"error":null,"result":{"success":true,"action":"inquiry","transaction_id":"24d1df5b5688a96d55426bb2b6a6d2124e73979075ec5678354252"}}';
                         $response = json_decode($response);
+                        $this->printPreDebug('Rsta de gateway parseada a objeto', $response);
                         $retries++;
                     }
                 }
