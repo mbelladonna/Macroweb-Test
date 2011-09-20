@@ -12,7 +12,7 @@
 </script>
 
 <div id="titular">
-    Date de alta por 1,42&#8364/ sms recibido, consigue creditos para enviar sms<br /> a tu amigos.
+    Date de alta por 1,42€/ sms recibido, consigue creditos <br /> para enviar sms a tu amigos.
 </div>
 
 <?                      
