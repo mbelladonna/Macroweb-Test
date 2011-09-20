@@ -122,6 +122,7 @@ class pornoxmovil extends MY_Controller {
                         $response = json_decode($response);
                         $this->printPreDebug('Rsta de gateway parseada a objeto', $response);
                         $retries++;
+                        sleep(3);
                     }
                 }
                 if ($response == FALSE) {
