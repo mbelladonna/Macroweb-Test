@@ -20,7 +20,7 @@
                 <br />
                 <?echo anchor('smsender/condiciones', 'Condiciones de Uso')?> | 
                 <?echo anchor('smsender/ayuda', 'Ayuda')?> |
-                <?echo mailto('info@500smsgratis.com', 'Contactar')?> |
+                <?echo mailto('info@envia500sms.com', 'Contactar')?> |
                 <?echo anchor('smsender/tratamientoDatos', 'Tratamiento de Datos')?> 
             </div>
         </div>
