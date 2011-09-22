@@ -14,7 +14,33 @@
 | path to your installation.
 |
 */
-$config['base_url']	= '';
+
+if (isset($_SERVER['HTTP_HOST'])) {
+    switch ($_SERVER['HTTP_HOST']) {
+        case "localhost":
+            define('SITE_URL', 'local', TRUE);
+            break;
+        case "www.clubita.com":
+        case "clubita.com":
+            $prodBase = $_SERVER['HTTP_HOST'];
+            define('SITE_URL', 'production', TRUE);
+            break;
+    }
+} else {
+    define('SITE_URL', 'production', TRUE);
+}
+
+if (SITE_URL == "local") {
+    $urlBase = "http://localhost/clubContenidos/";
+    $indexPage = "index.php";
+} else if (SITE_URL == "production"){
+    $urlBase = "http://$prodBase/";
+    $indexPage = "index.php";
+} else {
+    die ("Error: SITE_URL invalido.-");
+}
+
+$config['base_url']	= $urlBase;
 
 /*
 |--------------------------------------------------------------------------
@@ -224,7 +250,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = '';
+$config['encryption_key'] = 'asdhasiudyh32789hd98qadh9hsa89dash89dwq3h098';
 
 /*
 |--------------------------------------------------------------------------
