@@ -4,30 +4,13 @@
  *
  * Makes authentication simple
  *
- * Simplelogin is released to the public domain
- * (use it however you want to)
- * 
- * Simplelogin expects this database setup
- * (if you are not using this setup you may
- * need to do some tweaking)
- * 
-
-	#This is for a MySQL table
-	CREATE TABLE `users` (
-	`id` INT( 11 ) NOT NULL AUTO_INCREMENT PRIMARY KEY ,
-	`username` VARCHAR( 64 ) NOT NULL ,
-	`password` VARCHAR( 64 ) NOT NULL ,
-	UNIQUE (
-	`username`
-	)
-	);
-
+ 
  * 
  */
 class Simplelogin
 {
 	var $CI;
-	var $user_table = 'users';
+	
 
 	function Simplelogin()
 	{

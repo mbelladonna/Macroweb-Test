@@ -45,6 +45,7 @@ class clubcontenidos extends MY_Controller {
 	public function index() {
          //$this->output->enable_profiler(TRUE);
         $this->data['title'] = 'Club Contenidos';
+        $this->data['contentlogin'] = $this->load->view('clubcontenidos/login', $this->data, TRUE);
         $this->data['content'] = $this->load->view('clubcontenidos/clubcontenidos', $this->data, TRUE);
         $this->load->view($this->template, $this->data);
 	}
@@ -65,7 +66,8 @@ class clubcontenidos extends MY_Controller {
             
         }
         $this->data['title'] = 'Club Contenidos - Login';
-        $this->data['content'] = $this->load->view('clubcontenidos/login', $this->data, TRUE);
+        $this->data['contentlogin'] = $this->load->view('clubcontenidos/login', $this->data, TRUE);
+        $this->data['content'] = $this->load->view('clubcontenidos/clubcontenidos', $this->data, TRUE);
         $this->load->view($this->template, $this->data);
     }
     
@@ -121,6 +123,7 @@ class clubcontenidos extends MY_Controller {
         
         
         $this->data['title'] = 'Club Contenidos - Register';
+        $this->data['contentlogin'] = $this->load->view('clubcontenidos/login', $this->data, TRUE);
         $this->data['content'] = $this->load->view('clubcontenidos/register', $this->data, TRUE);
         $this->load->view($this->template, $this->data);
     }
@@ -178,20 +181,12 @@ class clubcontenidos extends MY_Controller {
 
         }
         $this->data['title'] = 'Club Contenidos - Check Pin';
+        $this->data['contentlogin'] = $this->load->view('clubcontenidos/login', $this->data, TRUE);
         $this->data['content'] = $this->load->view('clubcontenidos/checkpin', $this->data, TRUE);
         $this->load->view($this->template, $this->data);        
     }
     
-    /*
-    ** Acciones a realizar si el usuario es nuevo
-    */    
-    public function newUser(){
-    
-        
-    $this->data['title'] = 'Club Contenidos - Registro usuario nuevo';
-    $this->data['content'] = $this->load->view('clubcontenidos/newuser', $this->data, TRUE);
-    $this->load->view($this->template, $this->data); 
-    }
+   
 }
     
  

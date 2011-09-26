@@ -5,12 +5,30 @@
         <title><? if(!isset($title)) : ?>clubita.com<? else: ?><?=$title?><?php endif;?></title>
     </head>
     <body>
+    
+    
+    <table width="100%"> 
+    <tr> 
+        <td> Logo </td> 
+        <td> Club Contenido </td> 
+    </tr>
+    <tr> 
+        <td > Categoria </td> 
+        <td> productonuevo1 </td>
+        <td> productonuevo2 </td>
+        <td> productonuevo3 </td>
+    </tr>
+   <tr> <td> Columna1 </td> 
+        <td> Columna 2 </td>
+        <td> Columna 3 </td>
+        <td>  
+            <?=$contentlogin?> 
+        </td>
+    </tr>
+    </table>
+    
         <div align="center">
-        <? if ($this->session->userdata('logged_in')) : ?> 
-            <? echo anchor('clubcontenidos/logout', 'Logout'); ?>
-        <? else : ?>
-            <? echo anchor('clubcontenidos/register', 'Regístrate'); ?> | <? echo anchor('clubcontenidos/login', 'Login'); ?>
-        <? endif; ?>
+        
             
         </div>
         
