@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 23, 2011 at 05:42 PM
+-- Generation Time: Sep 26, 2011 at 07:32 PM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
@@ -25,7 +25,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Table structure for table `check_pin_requests`
 --
 
-CREATE TABLE IF NOT EXISTS `check_pin_requests` (
+CREATE TABLE `check_pin_requests` (
   `request_id` int(11) NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `pin` varchar(15) NOT NULL,
@@ -36,15 +36,27 @@ CREATE TABLE IF NOT EXISTS `check_pin_requests` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `check_user_requests`
+--
+
+CREATE TABLE `check_user_requests` (
+  `user` varchar(64) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `check_user_response` varchar(64) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `requests`
 --
 
-CREATE TABLE IF NOT EXISTS `requests` (
+CREATE TABLE `requests` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `movil` varchar(64) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 -- --------------------------------------------------------
 
@@ -52,21 +64,8 @@ CREATE TABLE IF NOT EXISTS `requests` (
 -- Table structure for table `send_pin_requests`
 --
 
-CREATE TABLE IF NOT EXISTS `send_pin_requests` (
+CREATE TABLE `send_pin_requests` (
   `request_id` int(11) NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `send_pin_response` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
---
-
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(64) NOT NULL,
-  `password` varchar(64) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;

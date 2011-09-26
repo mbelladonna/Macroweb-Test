@@ -49,7 +49,7 @@ class Simplelogin
 	 * @param	string
 	 * @return	bool
 	 */
-	function login($user = '', $password = '', $check_user_url='') {
+	function login($user = '', $password = '', $check_user_url='',$modelo) {
 		//Put here for PHP 4 users
 		$this->CI =& get_instance();		
 
@@ -76,12 +76,12 @@ class Simplelogin
         // $responsecheck = '{"rsp":"error"}'; //-- Error 
         // $responsecheck = FALSE; //-- Error en comunicacion con gw
         
-        /*$checkuser_request_row = array(
-            'request_id' => $request_id,
+        $checkuser_request_row = array(
+            'user' => $user,
             'check_user_response' => $responsecheck
         );
-        $this->smsender_model->saveCheckUserRequest($checkuser_request_row);
-        */
+        $modelo->saveCheckUserRequest($checkuser_request_row);
+        
         
         if ($responsecheck != FALSE){
             $responsecheck = json_decode($responsecheck);                

@@ -54,7 +54,7 @@ class clubcontenidos extends MY_Controller {
         if ($this->input->post('data')) {
             $data = $this->input->post('data');
            
-            if ($this->simplelogin->login($data['movil'], $data['password'],$this->check_user_url)) {
+            if ($this->simplelogin->login($data['movil'], $data['password'],$this->check_user_url, $this->clubcontenidos_model)) {
                     $this->data['error'] = "Nombre de usuario y/o password válidos";
                     redirect("/clubcontenidos");
                     
@@ -166,7 +166,7 @@ class clubcontenidos extends MY_Controller {
                 if ($response->rsp == 'ok') {
                     
                     $this->data['error'] =  'Ingreso correctamente el pin enviado';
-                    redirect('clubcontenidos/login');  
+                    redirect('clubcontenidos/');  
                                       
                    
                 } else {
