@@ -54,11 +54,15 @@ class clubcontenidos extends MY_Controller {
         if ($this->input->post('data')) {
             $data = $this->input->post('data');
            
-            if ($this->simplelogin->login($data['movil'], $data['password'])) {
+            if ($this->simplelogin->login($data['movil'], $data['password'],$this->check_user_url)) {
                     $this->data['error'] = "Nombre de usuario y/o password válidos";
+                    redirect("/clubcontenidos");
+                    
             } else {
                 $this->data['error'] = "ERROR: Nombre de usuario y/o password inválidos";
             }
+                        
+            
         }
         $this->data['title'] = 'Club Contenidos - Login';
         $this->data['content'] = $this->load->view('clubcontenidos/login', $this->data, TRUE);
@@ -80,8 +84,7 @@ class clubcontenidos extends MY_Controller {
             );
             $request_id = $this->clubcontenidos_model->saveRequest($request_row);
             
-            
-            
+                      
             // Usuario no subscripto
         
             // Solicitar al gw envio de pin a numero origen
@@ -162,8 +165,8 @@ class clubcontenidos extends MY_Controller {
                 $response = json_decode($response);                
                 if ($response->rsp == 'ok') {
                     
-                    //this->data['error'] =  'Ingreso correctamente el pin enviado';
-                    redirect("/clubcontenidos/newUser");    
+                    $this->data['error'] =  'Ingreso correctamente el pin enviado';
+                    redirect('clubcontenidos/login');  
                                       
                    
                 } else {
@@ -174,7 +177,7 @@ class clubcontenidos extends MY_Controller {
             }
 
         }
-        $this->data['title'] = 'Club Contenidos - Ckeck Pin';
+        $this->data['title'] = 'Club Contenidos - Check Pin';
         $this->data['content'] = $this->load->view('clubcontenidos/checkpin', $this->data, TRUE);
         $this->load->view($this->template, $this->data);        
     }
