@@ -1,4 +1,4 @@
-<? echo form_open(current_url(), array('method' => 'post', 'id'=>'login')); ?>
+<? echo form_open('/clubcontenidos/login', array('method' => 'post', 'id'=>'login')); ?>
     <?                      
         if (isset($error)) :
     ?>
