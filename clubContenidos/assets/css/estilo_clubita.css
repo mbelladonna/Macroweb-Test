@@ -1,0 +1,301 @@
+@charset "utf-8";
+/* CSS Document */
+
+body 
+{background:url(../img/linea_fondo.jpg);
+margin-top:0px;}
+
+#contenedor
+{width:959px;
+height:1350px;
+margin:auto;}
+
+#telefono
+{width:900px;
+height:12px;
+float:left;
+margin-top:5px;
+text-align:right;}
+
+#telefono a {
+text-decoration: none;
+color:#0099FF
+}
+
+#navegacion
+{width:959px;
+height:118px;
+float:left;
+margin-top:5px;
+background:url(../img/fondo_naveg.png);}
+
+#logo{
+	width:252px;
+	height:47px;
+	float:left;
+	margin-top:20px;}
+	
+#buscador{
+	width:200px;
+	height:30px;
+	float:left;
+	margin-left:490px;
+	margin-top:30px;}
+	
+#botonera{
+margin-top:25px;
+width:800px;
+height:20px;
+float:left;}
+
+#botonera a {
+text-decoration: none;
+color:#003399
+}
+
+#cabecera{
+width:959px;
+height:312px;
+float:left;
+margin-top:40px;}
+
+#centro{
+width:959px;
+height:auto;
+float:left;
+margin-top:25px;
+}		
+
+#centro_izq{
+background:url(../img/fondo_izq.png);
+width:699px;
+height:707px;
+float:left;
+margin-right:17px;
+}
+
+#centro_der{
+width:243px;
+height:707px;
+float:left;
+}
+
+#login{
+width:243px;
+height:150px;
+float:left;
+text-align:center;
+margin-top:15px;}
+
+#top_descargas {
+background:url(../img/fondo_centroder.png);
+width:243px;
+height:372px;
+float:left;
+}
+
+#titulo_top_descargas {
+width:243px;
+height:auto;
+float:left;
+margin-top:26px;
+text-align:center;}
+
+
+#titulo_izq_fondos{
+width:600px;
+height:15px;
+float:left;
+margin-top:20px;
+margin-left:15px;}
+
+#titulo_izq_videos{
+width:600px;
+height:15px;
+float:left;
+margin-top:20px;
+margin-left:15px;}
+
+#videos{
+width:669px;
+height:200px;
+float:left;
+margin-top:15px;
+margin-left:15px;
+margin-right:15px;}
+
+
+#fondos{
+width:669px;
+height:auto;
+float:left;
+margin-top:15px;
+margin-left:15px;
+margin-right:15px;}
+
+#caja_fondo{
+width:156px;
+height:150px;
+float:left;
+margin-right:15px;
+margin-bottom:15px;}
+
+#caja_img{
+width:156px;
+height:100px;
+float:left;}
+
+#titulo_img{
+width:156px;
+height:auto;
+float:left;
+margin-top:5px;
+text-align:center;}
+
+#resolucion_img{
+width:156px;
+height:auto;
+float:left;
+margin-top:5px;
+text-align:center;}
+
+
+#caja_video{
+width:156px;
+height:150px;
+float:left;
+margin-right:15px;
+margin-bottom:15px;}
+
+#caja_img_video{
+width:156px;
+height:100px;
+float:left;}
+
+#artista_video{
+width:156px;
+height:auto;
+float:left;
+margin-top:5px;
+text-align:center;}
+
+#nombre_video{
+width:156px;
+height:auto;
+float:left;
+margin-top:5px;
+text-align:center;}
+	
+#mas_fondos{
+width:669px;
+height:auto;
+float:left;
+text-align:right;
+}
+
+#mas_fondos a {
+text-decoration: none;
+color:#990000
+}
+
+#mas_videos{
+width:669px;
+height:auto;
+float:left;
+text-align:right;
+}
+
+
+#mas_videos a {
+text-decoration: none;
+color:#990000
+}		
+
+
+#pie{
+width:959px;
+height:100px;
+float:left;
+margin-top:60px;}
+
+#logo_pie{
+	width:252px;
+	height:47px;
+	float:left;
+	margin-top:20px;}
+	
+#botonera_pie{
+width:400px;
+height:auto;
+float:left;
+margin-top:20px;
+margin-left:300px;
+text-align:right;}
+
+
+#botonera_pie a {
+text-decoration: none;
+color:#b4b4b4
+}	
+
+
+#top_des1{
+width:243px;
+height:auto;
+float:left;
+text-align:center;
+margin-top:15px;
+}
+
+#top_rank1{
+width:220px;
+height:auto;
+float:left;
+margin-left:10px;
+margin-top:10px;
+}
+
+#linita1{
+width:243px;
+height:2px;
+float:left;
+margin-top:10px;
+}
+
+#top_des2{
+width:243px;
+height:auto;
+float:left;
+text-align:center;
+margin-top:10px;
+}
+
+#top_rank2{
+width:220px;
+height:auto;
+float:left;
+margin-left:10px;
+margin-top:10px;
+}
+
+
+
+.estilo_tops{font-family:Arial, Helvetica, sans-serif; color:#666666; font-size:14px;}
+
+.estilo1{font-family:Arial, Helvetica, sans-serif; color:#b4b4b4; font-size:13px;}
+
+.estilo_botonera{font-family:Arial, Helvetica, sans-serif; color:#003399; font-size:14px;}
+
+.estilo2{font-family:Arial, Helvetica, sans-serif; color:#333333; font-size:20px;}
+
+.estilo_top{font-family:Arial, Helvetica, sans-serif; color:#EFEFEF; font-size:20px;}
+
+.estilo_boton{font-family:Arial, Helvetica, sans-serif; color:#0099FF; font-size:13px;}
+
+.estilo_titulos{font-family:Verdana, Arial, Helvetica, sans-serif; color:#000033; font-size:15px;}
+
+.estilo_titulos_img{font-family:Verdana, Arial, Helvetica, sans-serif; color:#000033; font-size:11px;}
+
+.estilo_mas{font-family:Verdana, Arial, Helvetica, sans-serif; color:#990000; font-size:11px;}
+
+	

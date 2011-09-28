@@ -94,6 +94,10 @@ class Simplelogin
             return false;
         }
 	}
+    
+    function userLogged(){
+        return $this->CI->session->userdata('username');
+    }
 
 	/**
 	 * Logout user

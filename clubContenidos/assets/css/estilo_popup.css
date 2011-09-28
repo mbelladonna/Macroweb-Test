@@ -1,0 +1,126 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+body 
+{
+margin-top:0px;}
+
+#popup{
+background:url(../img/fondopop.png);
+width:563px;
+height:496px;
+margin:auto;
+margin-top:50px;
+}
+
+#titulo{
+width:400px;
+height:auto;
+float:left;
+margin-left:20px;
+margin-top:20px;
+}
+
+#cerrar{
+width:24px;
+height:24px;
+float:left;
+margin-top:20px;
+margin-left:90px;
+}
+
+#titulo2{
+width:500px;
+height:auto;
+float:left;
+margin-left:20px;
+margin-top:20px;
+}
+
+
+#caja_fondo{
+width:156px;
+height:150px;
+float:left;
+margin-top:20px;
+margin-left:20px;
+margin-right:15px;
+margin-bottom:15px;}
+
+#caja_img{
+width:156px;
+height:100px;
+float:left;}
+
+#titulo_img{
+width:156px;
+height:auto;
+float:left;
+margin-top:5px;
+text-align:center;}
+
+#resolucion_img{
+width:156px;
+height:auto;
+float:left;
+margin-top:5px;
+text-align:center;}
+
+
+#movil{
+width:350px;
+height:auto;
+float:left;
+margin-top:20px;
+}
+
+#linea2 {
+width:563px;
+height:10px;
+float:left;
+}
+
+#logan{
+width:500px;
+height:auto;
+float:left;
+margin-top:20px;
+margin-left:20px;
+}
+
+#terminos{
+width:500px;
+height:auto;
+float:left;
+margin-top:20px;
+margin-left:20px;
+}
+
+
+
+
+
+
+
+.estilo_tops{font-family:Arial, Helvetica, sans-serif; color:#666666; font-size:14px;}
+
+.estilo1{font-family:Arial, Helvetica, sans-serif; color:#b4b4b4; font-size:13px;}
+
+.estilo_botonera{font-family:Arial, Helvetica, sans-serif; color:#003399; font-size:14px;}
+
+.estilo2{font-family:Arial, Helvetica, sans-serif; color:#333333; font-size:20px;}
+
+.estilo_top{font-family:Arial, Helvetica, sans-serif; color:#EFEFEF; font-size:20px;}
+
+.estilo_boton{font-family:Arial, Helvetica, sans-serif; color:#0099FF; font-size:13px;}
+
+.estilo_boton2{font-family:Arial, Helvetica, sans-serif; color:#0099FF; font-size:19px;}
+
+.estilo_titulos{font-family:Verdana, Arial, Helvetica, sans-serif; color:#000033; font-size:15px;}
+
+.estilo_titulos_img{font-family:Verdana, Arial, Helvetica, sans-serif; color:#000033; font-size:11px;}
+
+.estilo_titulos_link{font-family:Verdana, Arial, Helvetica, sans-serif; color:#003399; font-size:11px; text-decoration:none;}
+
+.estilo_mas{font-family:Verdana, Arial, Helvetica, sans-serif; color:#990000; font-size:11px;}	
