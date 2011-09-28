@@ -80,7 +80,7 @@ class pornoxmovil extends MY_Controller {
         if ($this->input->post('data')) {
             $data = $this->input->post('data');
             $params = $this->subscription_params;
-            $params['user'] = $HTTP_SERVER_VARS [REMOTE_ADDR]; //ip
+            $params['user'] = $_SERVER['REMOTE_ADDR'];
             $params['carrier'] = $data['operador'];
 				
 		    // Envio request a API
