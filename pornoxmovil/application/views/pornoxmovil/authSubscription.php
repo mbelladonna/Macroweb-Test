@@ -1,7 +1,6 @@
 <script type="text/javascript">
    $(document).ready(function(){
         $("#form_subscription").validate();
-        $("#textfield_telefono").rules("add", reglas_telefono);
         $("#ckeck_terminos").rules("add", reglas_terminos); 
        });
 </script>
