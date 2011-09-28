@@ -17,8 +17,8 @@ class pornoxmovil extends MY_Controller {
 	var $gateway_key='AmBnZRF2QWf';
 
     // Scripts de procesamiento de rsta de pornoxmovil
-    var $success_url = 'subscriptionOk';
-	var $error_url = 'subscriptionError';
+    var $success_url = 'index.php/pornoxmovil/subscriptionOk';
+	var $error_url = 'index.php/pornoxmovil/subscriptionError';
     
     // Parametros para suscripcion
     var $subscription_params;
@@ -80,7 +80,7 @@ class pornoxmovil extends MY_Controller {
         if ($this->input->post('data')) {
             $data = $this->input->post('data');
             $params = $this->subscription_params;
-            $params['user'] = $HTTP_SERVER_VARS [REMOTE_ADDR]; //ip
+            $params['user'] = $_SERVER['REMOTE_ADDR'];
             $params['carrier'] = $data['operador'];
 				
 		    // Envio request a API
