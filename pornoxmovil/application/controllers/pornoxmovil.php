@@ -17,8 +17,8 @@ class pornoxmovil extends MY_Controller {
 	var $gateway_key='AmBnZRF2QWf';
 
     // Scripts de procesamiento de rsta de pornoxmovil
-    var $success_url = 'subscriptionOk';
-	var $error_url = 'subscriptionError';
+    var $success_url = 'index.php/pornoxmovil/subscriptionOk';
+	var $error_url = 'index.php/pornoxmovil/subscriptionError';
     
     // Parametros para suscripcion
     var $subscription_params;
