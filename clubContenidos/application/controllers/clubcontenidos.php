@@ -45,6 +45,7 @@ class clubcontenidos extends MY_Controller {
 	public function index() {
          //$this->output->enable_profiler(TRUE);
         $this->data['title'] = 'Club Contenidos';
+        $this->_dataTopDescargas($this->data);
         $this->data['contentlogin'] = $this->load->view('clubcontenidos/login', $this->data, TRUE);
         $this->data['content'] = $this->load->view('clubcontenidos/clubcontenidos', $this->data, TRUE);
         $this->load->view($this->template, $this->data);
@@ -66,6 +67,7 @@ class clubcontenidos extends MY_Controller {
             
         }
         $this->data['title'] = 'Club Contenidos - Login';
+        $this->_dataTopDescargas($this->data);
         $this->data['contentlogin'] = $this->load->view('clubcontenidos/login', $this->data, TRUE);
         $this->data['content'] = $this->load->view('clubcontenidos/clubcontenidos', $this->data, TRUE);
         $this->load->view($this->template, $this->data);
@@ -123,6 +125,7 @@ class clubcontenidos extends MY_Controller {
         
         
         $this->data['title'] = 'Club Contenidos - Register';
+        $this->_dataTopDescargas($this->data);
         $this->data['contentlogin'] = $this->load->view('clubcontenidos/login', $this->data, TRUE);
         $this->data['content'] = $this->load->view('clubcontenidos/register', $this->data, TRUE);
         $this->load->view($this->template, $this->data);
@@ -182,10 +185,18 @@ class clubcontenidos extends MY_Controller {
         }
         $this->data['title'] = 'Club Contenidos - Check Pin';
         $this->data['contentlogin'] = $this->load->view('clubcontenidos/login', $this->data, TRUE);
+        $this->_dataTopDescargas($this->data);
         $this->data['content'] = $this->load->view('clubcontenidos/checkpin', $this->data, TRUE);
         $this->load->view($this->template, $this->data);        
     }
     
+    private function _dataTopDescargas($data){
+    
+        $data['categresult'] = $this->clubcontenidos_model->getCategories();
+        
+        $this->data['contenttopdesc'] = $this->load->view('clubcontenidos/topdescargas', $data, TRUE);
+    
+    }
    
 }
     

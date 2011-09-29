@@ -46,7 +46,7 @@
       
             <div id="centro_izq">
             
-                
+                <?=$content?> 
                 
                 <div class="estilo_titulos" id="titulo_izq_fondos">Fondos de Escritorio</div>
                
@@ -93,39 +93,8 @@
           
                 <?=$contentlogin?> 
                
+				<?=$contenttopdesc?>
                
-                <div id="top_descargas">
-               
-                    <div class="estilo_top" id="titulo_top_descargas">TOP DESCARGAS</div>
-                    <div class="estilo_tops" id="top_des1">Fondos de Escritorio</div>
-                    <div class="estilo_titulos_img" id="top_rank1">
-                        - Messi Barcelona FC<br />
-                        - Cristiano CR7<br />
-                        - Windows 7 Ultimate 87<br />
-                        - Ferrari F1125<br />
-                        - Tempestad borne<br />
-                        - Messi Barcelona FC<br />
-                        - Cristiano CR7<br />
-                        - Windows 7 Ultimate 87<br />
-                    </div>
-                 
-                    <div id="linita1">
-                        <?echo img(array('src'=>'/assets/img/linita.png'));?>
-                    </div>
-                 
-                    <div id="top_des2"><span class="estilo_tops">Videos</span></div>
-                 
-                    <div id="top_rank2" class="estilo_titulos_img">
-                        - Shakira - Sale el Sol<br />
-                        - Don Omar - Danza Kuduro<br />
-                        - Los Wachiturros - Tirate un Paso<br />
-                        - Reik - Sabes<br />
-                        - Lady Gaga - Bad Romance<br />
-                        - Shakira - Sale el Sol<br />
-                        - Don Omar - Danza Kuduro<br />
-                        - Los Wachiturros - Tirate un Paso<br />
-                    </div>
-                </div>
             </div>
         </div>
       

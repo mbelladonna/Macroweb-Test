@@ -105,12 +105,13 @@ class clubcontenidos_model extends CI_Model {
         return $query->result();
     }
      
-    function saveNewProduct($titulo,$desc, $categ,$foto,$cred,$link){
+    function saveNewProduct($titulo,$desc, $categ,$foto,$textalt,$cred,$link){
         $params = array(
                 'titulo' => $titulo,
                 'descripcion' => $desc,
                 'categoria_id' => $categ,
                 'foto' => $foto,
+                'text_alt' => $textalt,
                 'creditos_nec' => $cred,
                 'url_link' => $link,
                 'downloads' => 0

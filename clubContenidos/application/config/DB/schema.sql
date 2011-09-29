@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 27, 2011 at 09:14 PM
+-- Generation Time: Sep 29, 2011 at 07:44 PM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
@@ -84,7 +84,8 @@ CREATE TABLE IF NOT EXISTS `products` (
   `titulo` varchar(128) NOT NULL,
   `descripcion` text,
   `categoria_id` int(11) NOT NULL,
-  `foto` varchar(128) NOT NULL,
+  `foto` varchar(64) NOT NULL,
+  `text_alt` varchar(64) NOT NULL,
   `creditos_nec` int(11) NOT NULL,
   `url_link` varchar(256) NOT NULL,
   `downloads` int(11) NOT NULL,
