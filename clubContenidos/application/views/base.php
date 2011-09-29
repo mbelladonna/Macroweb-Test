@@ -46,7 +46,7 @@
       
             <div id="centro_izq">
             
-                <?=$content?>
+                
                 
                 <div class="estilo_titulos" id="titulo_izq_fondos">Fondos de Escritorio</div>
                
