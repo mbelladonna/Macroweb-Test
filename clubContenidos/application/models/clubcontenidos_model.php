@@ -150,6 +150,13 @@ class clubcontenidos_model extends CI_Model {
         return $query->result();
     }
     
+    //productos ordenados por descargas x categoria
+    function getProductOrderByDownloadsxCateg($categ_id){
+        $this->db->where('categoria_id', $categ_id);
+        $this->db->order_by("downloads", "desc"); 
+        $query = $this->db->get('products'); 
+        return $query->result();
+    }
     
     function saveDownloadRequest($movil,$prod_id, $cred) {
             $params = array(
