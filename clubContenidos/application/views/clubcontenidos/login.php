@@ -1,16 +1,7 @@
 <?if (!$this->session->userdata('logged_in')) { ?>
 <div id="login">
     <? echo form_open('/clubcontenidos/login', array('method' => 'post', 'id'=>'form1')); ?>
-    <?                      
-        if (isset($error)) :
-    ?>
-        <div class="error">
-            <?echo $error?>
-        </div>
-    <?
-        unset($error);
-        endif;
-    ?>
+    
 
     
         
@@ -19,6 +10,20 @@
                  <tr>
                    <td align="center" class="estilo2">LOGIN DE USUARIO</td>
                  </tr>
+                 <?                      
+                    if (isset($error)) :
+                ?>
+                <tr>
+                   <td align="center" class="estilo2">
+                        <div class="error">
+                            <?echo $error?>
+                        </div>
+                    </td>
+                </tr>
+                <?
+                    unset($error);
+                    endif;
+                ?>
                  <tr>
                    <td height="15" align="center"></td>
                  </tr>

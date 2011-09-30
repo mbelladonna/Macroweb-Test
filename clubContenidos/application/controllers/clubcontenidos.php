@@ -55,16 +55,44 @@ class clubcontenidos extends MY_Controller {
     
         if ($this->input->post('data')) {
             $data = $this->input->post('data');
-           
-            if ($this->simplelogin->login($data['movil'], $data['password'],$this->check_user_url, $this->clubcontenidos_model)) {
-                    $this->data['error'] = "Nombre de usuario y/o password válidos";
-                    redirect("/clubcontenidos");
+            
+            // Chequeo de subscripción
+            $paramscheck = array(
+                'nroPhone' => '34'.$data['movil'],
+                'passwd' => $data['password'],
+            );
+            $responsecheck = $this->curl->_simple_call('get', $this->check_user_url, $paramscheck);
+            
+            // Quitar comentarios para forzar rstas del gateway para pruebas
+            //$responsecheck = '{"rsp":"ok"}'; //-- Existe el usuario
+            // $responsecheck = '{"rsp":"error"}'; //-- Error 
+            // $responsecheck = FALSE; //-- Error en comunicacion con gw
+            
+            $checkuser_request_row = array(
+                'user' => $data['movil'],
+                'check_user_response' => $responsecheck
+            );
+            $this->clubcontenidos_model->saveCheckUserRequest($checkuser_request_row);
+            
+            
+            if ($responsecheck != FALSE){
+                $responsecheck = json_decode($responsecheck);                
+                if ($responsecheck->rsp == 'ok') {
                     
+                    if ($this->simplelogin->login($data['movil'])) {
+                        $this->data['error'] = "Nombre de usuario y/o password válidos";
+                        redirect("/clubcontenidos");
+                        
+                    } else {
+                        $this->data['error'] = "ERROR: Nombre de usuario y/o password inválidos";
+                    }
+                  
+                } else {
+                    $this->data['error'] = "ERROR: Nombre de usuario y/o password inválidos";
+                }
             } else {
                 $this->data['error'] = "ERROR: Nombre de usuario y/o password inválidos";
             }
-                        
-            
         }
         $this->data['title'] = 'Club Contenidos - Login';
         $this->_dataTopDescargas();
@@ -95,10 +123,10 @@ class clubcontenidos extends MY_Controller {
             $params = array(
                 'nroPhone' => '34'.$data['movil'],
             );
-            //$response = $this->curl->_simple_call('get', $this->send_pin_url, $params);
+            $response = $this->curl->_simple_call('get', $this->send_pin_url, $params);
 
             // Quitar comentarios para forzar rstas del gateway para pruebas
-             $response = '{"rsp":"ok"}'; //-- PIN enviado
+            // $response = '{"rsp":"ok"}'; //-- PIN enviado
             // $response = '{"rsp":"error"}'; //-- Error en envio
             // $response = FALSE; //-- Error en comunicacion con gw
             
@@ -152,10 +180,10 @@ class clubcontenidos extends MY_Controller {
                 'nroPhone' => '34'.$request[0]->movil,
                 'pin' => $data['pin'],
             );
-            //$response = $this->curl->_simple_call('get', $this->check_pin_url, $params);
+            $response = $this->curl->_simple_call('get', $this->check_pin_url, $params);
                        
             // Quitar comentarios para forzar rstas del gateway para pruebas
-             $response = '{"rsp":"ok"}'; //-- PIN check ok
+            // $response = '{"rsp":"ok"}'; //-- PIN check ok
             // $response = '{"rsp":"error"}'; //-- PIN check not ok
             // $response = FALSE; //-- Error en comunicacion con gw
 
