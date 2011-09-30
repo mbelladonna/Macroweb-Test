@@ -4,6 +4,16 @@
         $("#textfield_movil").rules("add", reglas_movil);
         $("#textfield_password").rules("add", reglas_password);
    });
+    
+    function clearText(thefield){
+        if (thefield.defaultValue==thefield.value)
+        thefield.value = ""
+    }
+    
+    function setText(thefield){
+        if (thefield.value=="")
+        thefield.value = thefield.defaultValue
+    }
 </script>
 
 <?if (!$this->session->userdata('logged_in')) { ?>
@@ -34,7 +44,7 @@
                  <tr>
                    <td align="center">
                         <label>
-                            <? echo form_input(array('name'=>'data[movil]', 'class'=>'estilo1', 'id'=>'textfield_movil', 'value'=>'Usuario', 'maxlength'   => '9')); ?>
+                            <? echo form_input(array('name'=>'data[movil]', 'class'=>'estilo1', 'id'=>'textfield_movil', 'value'=>'Tu movil', 'maxlength'   => '9', 'onfocus'=>'clearText(this)', 'onblur'=>'setText(this)')); ?>
                             
                         </label>
                     </td>
@@ -46,7 +56,7 @@
                     
                     <td align="center">
                         <label>
-                         <? echo form_password(array('name'=>'data[password]', 'class'=>'estilo1', 'id'=>'textfield_password','maxlength'=>'10', 'value'=>'Contraseña')); ?>
+                         <? echo form_password(array('name'=>'data[password]', 'class'=>'estilo1', 'id'=>'textfield_password','maxlength'=>'10')); ?>
                         </label>
                     </td>
                  </tr>

@@ -8,6 +8,7 @@
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/validator/jquery.validate.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/validator/custom-rules.js"></script>
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/validator/localization/messages_es.js"></script>
+    
 </head>
 
 <body>
