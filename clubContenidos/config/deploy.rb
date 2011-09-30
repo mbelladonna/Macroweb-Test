@@ -9,15 +9,15 @@ set :repository, "git@github.com:querox/Proyectos-Generales-PHP.git"
 
 #Roles
 #Roles are named sets of servers that you can target Capistrano tasks to execute against.
-role :web, "clubita.com"
-role :app, "clubita.com"
+role :web, "Clubita.com"
+role :app, "Clubita.com"
 
 #Optional Settings
 #This allows Capistrano to prompt for passwords
 default_run_options[:pty] = true
 
 #The following lines tell Capistrano where to deploy the project
-set :deploy_to, "/var/www/vhosts/clubita.com"
+set :deploy_to, "/var/www/vhosts/Clubita.com"
 set :current_path, "#{deploy_to}/httpdocs"
 set :releases_path, "#{deploy_to}/releases/"
 set :shared_path, "#{deploy_to}/shared/"
