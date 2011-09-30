@@ -7,12 +7,19 @@
     
     function clearText(thefield){
         if (thefield.defaultValue==thefield.value)
-        thefield.value = ''
+        thefield.value = ""
     }
     
     function setText(thefield){
         if (thefield.value=="")
         thefield.value = thefield.defaultValue
+    }
+    
+    function clearTextPass(thefield){
+        if (thefield.defaultValue==thefield.value) {
+            thefield.value = "";
+            thefield.type = "password";
+        }
     }
 </script>
 
@@ -55,9 +62,11 @@
                  <tr>
                     
                     <td align="center">
-                        <label>
-                         <? echo form_password(array('name'=>'data[password]', 'class'=>'estilo1', 'id'=>'textfield_password','maxlength'=>'6')); ?>
-                        </label>
+                        <div id="div2" >
+                            <label>
+                             <? echo form_input(array('name'=>'data[password]', 'class'=>'estilo1', 'id'=>'textfield_password','maxlength'=>'6', 'value'=>'Tu contraseña', 'onfocus'=>'clearTextPass(this)')); ?>
+                            </label>
+                        </div>
                     </td>
                  </tr>
                  <tr>
