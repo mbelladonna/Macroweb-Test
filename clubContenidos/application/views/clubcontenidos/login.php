@@ -1,11 +1,15 @@
+<script type="text/javascript">
+   $(document).ready(function(){
+        $("#formlogin").validate();
+        $("#textfield_movil").rules("add", reglas_movil);
+        $("#textfield_password").rules("add", reglas_password);
+   });
+</script>
+
 <?if (!$this->session->userdata('logged_in')) { ?>
 <div id="login">
-    <? echo form_open('/clubcontenidos/login', array('method' => 'post', 'id'=>'form1')); ?>
-    
-
-    
-        
-        
+    <? echo form_open('/clubcontenidos/login', array('method' => 'post', 'id'=>'formlogin')); ?>
+          
             <table width="230" border="0" align="center" cellpadding="0" cellspacing="0">
                  <tr>
                    <td align="center" class="estilo2">LOGIN DE USUARIO</td>
@@ -30,7 +34,7 @@
                  <tr>
                    <td align="center">
                         <label>
-                            <? echo form_input(array('name'=>'data[movil]', 'class'=>'estilo1', 'id'=>'textfield_movil', 'value'=>'Usuario')); ?>
+                            <? echo form_input(array('name'=>'data[movil]', 'class'=>'estilo1', 'id'=>'textfield_movil', 'value'=>'Usuario', 'maxlength'   => '9')); ?>
                             
                         </label>
                     </td>
