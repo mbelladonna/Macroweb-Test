@@ -132,12 +132,16 @@ class clubcontenidos_model extends CI_Model {
         return $query->result();
     }
     
-    function getProducts(){
+    
+    function getProducts(){ 
+       
         $query = $this->db->get('products'); 
         return $query->result();
     }
     
+    // ordenados aleatoriamente 
     function getProductCategory($categ_id){
+         $this->db->order_by("titulo","random");
         $this->db->where('categoria_id', $categ_id);
         $query = $this->db->get('products'); 
         return $query->result();

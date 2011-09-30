@@ -5,7 +5,7 @@
             <div class="estilo_tops" id="top_des1"><? echo $row->name; ?> </div>
             <div id="top_rank2" class="estilo_titulos_img">
                 <? 
-                foreach ($prodxcateg[$row->id_category]as $row2) {?>
+                foreach ($prodxcategtop[$row->id_category]as $row2) {?>
                 - <? echo $row2->titulo; ?><br /> 
                 <?  } ?>
             </div>

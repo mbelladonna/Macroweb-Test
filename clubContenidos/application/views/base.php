@@ -53,45 +53,6 @@
             
                 <?=$content?> 
                 
-                <div class="estilo_titulos" id="titulo_izq_fondos">Fondos de Escritorio</div>
-               
-                <div id="fondos">
-               
-                    <div id="caja_fondo">
-                 
-                        <div id="caja_img">
-                            <?echo img(array('src'=>'/assets/img/img1.jpg', 'alt'=>'messi'));?>
-                        </div>
-                        <div class="estilo_titulos_img" id="titulo_img">Messi Barcelona FC</div>
-                        <div class="estilo_titulos_img" id="resolucion_img">1024x768</div>
-                 
-                    </div>
-                 
-                    <div class="estilo_mas" id="mas_fondos">
-                        <?echo anchor('/clubcontenidos/masFondos', 'Mas Fondos de Escritorio --&gt')?>
-                    </div>
-                    
-                </div>
-               
-                <div class="estilo_titulos" id="titulo_izq_videos">Videos</div>
-               
-                <div id="videos">
-               
-                    <div id="caja_video">
-                 
-                        <div id="caja_img_video">
-                            <?echo img(array('src'=>'/assets/img/video1.jpg', 'alt'=>'shakira'));?>
-                        </div>
-                        <div class="estilo_titulos_img" id="artista_video">Shakira</div>
-                        <div class="estilo_titulos_img" id="nombre_video">Sale el Sol</div>
-                    </div>
-             
-                    <div id="mas_videos" class="estilo_mas">
-                        <?echo anchor('/clubcontenidos/masVideos', 'Mas Videos --&gt')?>
-                    </div>
-           
-                </div>
-          
             </div>
           
             <div id="centro_der">

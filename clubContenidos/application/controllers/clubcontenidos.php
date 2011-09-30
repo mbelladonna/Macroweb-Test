@@ -21,6 +21,7 @@ class clubcontenidos extends MY_Controller {
     var $pwd = 'sgB71SDf20';
     var $app = 'PUSH-ECO';
     var $sNumber = '';
+    var $categresult;
 
     
    function __construct() {
@@ -36,6 +37,7 @@ class clubcontenidos extends MY_Controller {
         $this->send_pin_url = "{$this->gateway_url}gate/sendPin/AmBnZRF2QWf/{$this->keyword}/{$this->campaign_id}/";
         $this->check_pin_url = "{$this->gateway_url}gate/checkPin/AmBnZRF2QWf/{$this->keyword}/{$this->campaign_id}/";
         $this->load->model(array('clubcontenidos_model'));
+        
     }
 
         
@@ -45,10 +47,13 @@ class clubcontenidos extends MY_Controller {
 	public function index() {
          //$this->output->enable_profiler(TRUE);
         $this->data['title'] = 'Club Contenidos';
+        $this->_dataCategories();
         $this->_dataTopDescargas();
+        $this->_dataProductos();
         $this->data['contentlogin'] = $this->load->view('clubcontenidos/login', $this->data, TRUE);
         $this->data['content'] = $this->load->view('clubcontenidos/clubcontenidos', $this->data, TRUE);
         $this->load->view($this->template, $this->data);
+        
 	}
     
     public function login(){
@@ -95,7 +100,9 @@ class clubcontenidos extends MY_Controller {
             }
         }
         $this->data['title'] = 'Club Contenidos - Login';
+        $this->_dataCategories();
         $this->_dataTopDescargas();
+        
         $this->data['contentlogin'] = $this->load->view('clubcontenidos/login', $this->data, TRUE);
         $this->data['content'] = $this->load->view('clubcontenidos/clubcontenidos', $this->data, TRUE);
         $this->load->view($this->template, $this->data);
@@ -153,7 +160,9 @@ class clubcontenidos extends MY_Controller {
         
         
         $this->data['title'] = 'Club Contenidos - Register';
+        $this->_dataCategories();
         $this->_dataTopDescargas();
+        
         $this->data['contentlogin'] = $this->load->view('clubcontenidos/login', $this->data, TRUE);
         $this->data['content'] = $this->load->view('clubcontenidos/register', $this->data, TRUE);
         $this->load->view($this->template, $this->data);
@@ -213,23 +222,41 @@ class clubcontenidos extends MY_Controller {
         }
         $this->data['title'] = 'Club Contenidos - Check Pin';
         $this->data['contentlogin'] = $this->load->view('clubcontenidos/login', $this->data, TRUE);
+        $this->_dataCategories();
         $this->_dataTopDescargas();
+       
         $this->data['content'] = $this->load->view('clubcontenidos/checkpin', $this->data, TRUE);
         $this->load->view($this->template, $this->data);        
     }
     
+     private function _dataCategories(){
+        $this->categresult = $this->clubcontenidos_model->getCategories();
+        $this->data['categresult'] = $this->categresult;
+    
+    }
+    
     private function _dataTopDescargas(){
-        $categresult = $this->clubcontenidos_model->getCategories();
-        $prodxcateg = array ();
-        foreach ($categresult as $row) {
+        $prodxcategtop = array ();
+        foreach ($this->categresult as $row) {
             $id_categ = $row->id_category;
-            $prod = $this->clubcontenidos_model->getProductOrderByDownloadsxCateg($id_categ);
-            $prodxcateg[$id_categ] = $prod;
+            $prodxcategtop[$id_categ] = $this->clubcontenidos_model->getProductOrderByDownloadsxCateg($id_categ);
         }
         
-        $this->data['categresult'] = $categresult;
-        $this->data['prodxcateg'] = $prodxcateg;
+        
+        $this->data['prodxcategtop'] = $prodxcategtop;
         $this->data['contenttopdesc'] = $this->load->view('clubcontenidos/topdescargas', $this->data, TRUE);
+    
+    }
+    
+    private function _dataProductos(){
+        $productos = array ();
+        foreach ($this->categresult as $row) {
+            $id_categ = $row->id_category;
+            $productos[$id_categ] = $this->clubcontenidos_model->getProductCategory($id_categ);
+        }
+             
+        $this->data['productos'] = $productos;
+        $this->data['content'] = $this->load->view('clubcontenidos/clubcontenidos', $this->data, TRUE);
     
     }
    
