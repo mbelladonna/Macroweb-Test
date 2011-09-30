@@ -7,7 +7,7 @@
     
     function clearText(thefield){
         if (thefield.defaultValue==thefield.value)
-        thefield.value = ""
+        thefield.value = ''
     }
     
     function setText(thefield){
@@ -56,7 +56,7 @@
                     
                     <td align="center">
                         <label>
-                         <? echo form_password(array('name'=>'data[password]', 'class'=>'estilo1', 'id'=>'textfield_password','maxlength'=>'10')); ?>
+                         <? echo form_password(array('name'=>'data[password]', 'class'=>'estilo1', 'id'=>'textfield_password','maxlength'=>'6')); ?>
                         </label>
                     </td>
                  </tr>

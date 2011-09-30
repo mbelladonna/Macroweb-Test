@@ -10,7 +10,7 @@ jQuery.validator.addMethod("startsWith", function(value, element, param) {
 ** Reglas de validacion
 */
 
-// Telefonos
+// Movil
 var reglas_movil = {
     required: true,
     digits: true,
@@ -21,13 +21,8 @@ var reglas_movil = {
 // Password
 var reglas_password = {
     required: true,
-    maxlength: 10
-};
-
-// Usuario
-var reglas_usuario = {
-    required: true,
-    maxlength: 8,    
+    digits: true,
+    maxlength: 6
 };
 
 // Terminos y condiciones
